@@ -6,6 +6,7 @@ using Interop.ErpBS800;
 using Interop.StdPlatBS800;
 using Interop.StdBE800;
 using Interop.GcpBE800;
+using Interop.CrmBE800;
 using ADODB;
 using Interop.IGcpBS800;
 //using Interop.StdBESql800;
@@ -375,7 +376,7 @@ namespace FirstREST.Lib_Primavera
             GcpBELinhaDocumentoCompra myLin = new GcpBELinhaDocumentoCompra();
             GcpBELinhasDocumentoCompra myLinhas = new GcpBELinhasDocumentoCompra();
 
-            PreencheRelacaoCompras rl = new PreencheRelacaoCompras();
+            Interop.GcpBE800.PreencheRelacaoCompras rl = new Interop.GcpBE800.PreencheRelacaoCompras();
             List<Model.LinhaDocCompra> lstlindv = new List<Model.LinhaDocCompra>();
 
             try
@@ -437,8 +438,8 @@ namespace FirstREST.Lib_Primavera
             GcpBELinhaDocumentoVenda myLin = new GcpBELinhaDocumentoVenda();
 
             GcpBELinhasDocumentoVenda myLinhas = new GcpBELinhasDocumentoVenda();
-             
-            PreencheRelacaoVendas rl = new PreencheRelacaoVendas();
+
+            Interop.GcpBE800.PreencheRelacaoVendas rl = new Interop.GcpBE800.PreencheRelacaoVendas();
             List<Model.LinhaDocVenda> lstlindv = new List<Model.LinhaDocVenda>();
             
             try
@@ -605,7 +606,7 @@ namespace FirstREST.Lib_Primavera
                 FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
 
-                objList = PriEngine.Engine.Consulta("SELECT Vendedor, Nome FROM VENDEDORES");
+                objList = objList = PriEngine.Engine.Comercial.Vendedores.LstVendedores();
 
                 
                 while (!objList.NoFim())
@@ -666,8 +667,7 @@ namespace FirstREST.Lib_Primavera
                 FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
 
-                objList = PriEngine.Engine.Consulta("SELECT Oportunidade, Descricao FROM OPORTUNIDADESDEVENDA");
-
+                objList = null;
 
                 while (!objList.NoFim())
                 {
@@ -681,6 +681,35 @@ namespace FirstREST.Lib_Primavera
                 }
 
                 return listOps;
+            }
+            else
+                return null;
+        }
+
+        public static Lib_Primavera.Model.OportunidadeDeVenda GetOportunidadeDeVenda(string codOportunidade)
+        {
+
+
+            CrmBEOportunidadeVenda objOpp = new CrmBEOportunidadeVenda();
+
+
+            Model.OportunidadeDeVenda myOpp = new Model.OportunidadeDeVenda();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(),
+                FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                if (PriEngine.Engine.CRM.OportunidadesVenda.Existe(codOportunidade) == true)
+                {
+                    objOpp = PriEngine.Engine.CRM.OportunidadesVenda.Edita(codOportunidade);
+                    myOpp.id = objOpp.get_Oportunidade();
+                    myOpp.descricao = objOpp.get_Descricao();
+                    return myOpp;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
                 return null;

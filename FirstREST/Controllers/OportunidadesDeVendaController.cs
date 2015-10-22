@@ -17,9 +17,9 @@ namespace FirstREST.Controllers
         }
 
         // GET api/oportunidadesdevenda/5
-        public string Get(int id)
+        public Lib_Primavera.Model.OportunidadeDeVenda Get(string id)
         {
-            return "value";
+            return Lib_Primavera.PriIntegration.GetOportunidadeDeVenda(id) ;
         }
 
         // POST api/oportunidadesdevenda
