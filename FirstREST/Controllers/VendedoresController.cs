@@ -35,6 +35,10 @@ namespace FirstREST.Controllers
             }
         }
 
+        public IEnumerable<Lib_Primavera.Model.Cliente> GetClientes(string id)
+        {
+            return Lib_Primavera.PriIntegration.ListaClientesPorVendedor(id);
+        }
 
     }
 }

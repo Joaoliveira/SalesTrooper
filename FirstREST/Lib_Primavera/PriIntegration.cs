@@ -33,7 +33,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES");
+                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM CLIENTES");
 
                 
                 while (!objList.NoFim())
@@ -235,7 +235,36 @@ namespace FirstREST.Lib_Primavera
         }
 
        
+        public static List<Model.Cliente> ListaClientesPorVendedor(string idVendedor)
+        {
+            StdBELista objList;
 
+            List<Model.Cliente> listCli = new List<Model.Cliente>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(),
+                FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM CLIENTES WHERE Vendedor =" + idVendedor);
+                //PriEngine.Engine.CRM.j
+                while (!objList.NoFim())
+                {
+                    listCli.Add(new Model.Cliente
+                    {
+                        CodCliente = objList.Valor("Cliente"),
+                        NomeCliente = objList.Valor("Nome"),
+                        Moeda = objList.Valor("Moeda"),
+                        NumContribuinte = objList.Valor("NumContribuinte"),
+                        Morada = objList.Valor("campo_exemplo")
+                    });
+
+                }
+
+                return listCli;
+            }
+            else
+                return null;
+        }
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
 
@@ -630,7 +659,7 @@ namespace FirstREST.Lib_Primavera
         {
 
 
-            GcpBEVendedor objVnd = new GcpBEVendedor();
+            StdBELista objVnd = new StdBELista();
 
 
             Model.Vendedor myVnd = new Model.Vendedor();
@@ -638,12 +667,12 @@ namespace FirstREST.Lib_Primavera
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(),
                 FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
+                objVnd = PriEngine.Engine.Consulta("SELECT * FROM Vendedores WHERE Vendedor = " + codVendedor);
 
-                if (PriEngine.Engine.Comercial.Vendedores.Existe(codVendedor) == true)
+                if (objVnd.NumLinhas() > 0)
                 {
-                    objVnd = PriEngine.Engine.Comercial.Vendedores.Edita(codVendedor);
-                    myVnd.id = objVnd.get_Vendedor();
-                    myVnd.Nome = objVnd.get_Nome();
+                    myVnd.id = objVnd.Valor("Vendedor");
+                    myVnd.Nome = objVnd.Valor("Nome");
                     return myVnd;
                 }
                 else
@@ -667,7 +696,7 @@ namespace FirstREST.Lib_Primavera
                 FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
 
-                objList = null;
+                objList = PriEngine.Engine.Consulta("SELECT * FROM CABECOPORTUNIDADESVENDA"); 
 
                 while (!objList.NoFim())
                 {
