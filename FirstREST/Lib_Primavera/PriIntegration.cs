@@ -333,6 +333,43 @@ namespace FirstREST.Lib_Primavera
 
         }
 
+        public static List<Model.Cliente> GetVendedorClientes(string id)
+        {
+
+
+            StdBELista objList;
+
+            List<Model.Cliente> listClientes = new List<Model.Cliente>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT Cliente, Nome, Moeda, NumContrib as NumContribuinte, Fac_Mor AS campo_exemplo FROM  CLIENTES WHERE Vendedor = " + "\'" + id + "\'");
+
+
+                while (!objList.NoFim())
+                {
+                    listClientes.Add(new Model.Cliente
+                    {
+                        CodCliente = objList.Valor("Cliente"),
+                        NomeCliente = objList.Valor("Nome"),
+                        Moeda = objList.Valor("Moeda"),
+                        NumContribuinte = objList.Valor("NumContribuinte"),
+                        Morada = objList.Valor("campo_exemplo")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listClientes;
+            }
+            else
+                return null;
+        }
+
+
         #endregion Vendedor;
 
         #region Artigo
