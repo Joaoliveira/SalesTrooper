@@ -23,6 +23,12 @@ namespace FirstREST.Controllers
             return Lib_Primavera.PriIntegration.GetVendedor(id);
         }
 
+        [Route("api/Vendedores/{id}/leads")]
+        [HttpGet]
+        public IEnumerable<Lib_Primavera.Model.Lead> GetL(string id)
+        {
+            return Lib_Primavera.PriIntegration.LeadsVendedor(id);
+        }
 
     }
 }

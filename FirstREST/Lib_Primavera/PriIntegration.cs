@@ -333,6 +333,36 @@ namespace FirstREST.Lib_Primavera
 
         }
 
+        public static List<Model.Lead> LeadsVendedor(string id)
+        {
+            StdBELista objList;
+
+            List<Model.Lead> listLeads = new List<Model.Lead>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\'");
+
+
+                while (!objList.NoFim())
+                {
+                    listLeads.Add(new Model.Lead
+                    {
+                        idLead = objList.Valor("ID"),
+                        DescLead = objList.Valor("Descricao"),
+                        Entidade = objList.Valor("Entidade"),
+                        TipoEntidade = objList.Valor("TipoEntidade")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listLeads;
+            }
+            else
+                return null;
+        }
+
         #endregion Vendedor;
 
         #region Artigo
