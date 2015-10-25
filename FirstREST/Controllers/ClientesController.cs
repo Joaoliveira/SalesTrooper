@@ -13,7 +13,6 @@ namespace FirstREST.Controllers
     {
         //
         // GET: /Clientes/
-
         public IEnumerable<Lib_Primavera.Model.Cliente> Get()
         {
                 return Lib_Primavera.PriIntegration.ListaClientes();
@@ -115,7 +114,8 @@ namespace FirstREST.Controllers
 
         }
 
-        [Route("api/Cliente/{customerId}/Leads"), HttpGet()]
+        [Route("api/Cliente/{customerId}/Leads")]
+        [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Lead> FindCostumerLeads(string customerId)
         {
             return Lib_Primavera.PriIntegration.LeadsCliente(customerId);

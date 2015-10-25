@@ -269,6 +269,72 @@ namespace FirstREST.Lib_Primavera
         #endregion Cliente;   // -----------------------------  END   CLIENTE    -----------------------
 
 
+        #region Vendedor
+
+
+        public static List<Model.Vendedor> ListaVendedores()
+        {
+
+
+            StdBELista objList;
+
+            List<Model.Vendedor> listVendedores = new List<Model.Vendedor>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT Vendedor, Nome FROM  VENDEDORES");
+
+
+                while (!objList.NoFim())
+                {
+                    listVendedores.Add(new Model.Vendedor
+                    {
+                        CodVendedor = objList.Valor("Vendedor"),
+                        NomeVendedor = objList.Valor("Nome")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listVendedores;
+            }
+            else
+                return null;
+        }
+
+        public static Lib_Primavera.Model.Vendedor GetVendedor(string id)
+        {
+            GcpBEVendedor objVen = new GcpBEVendedor();
+
+
+            Model.Vendedor myVend = new Model.Vendedor();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                if (PriEngine.Engine.Comercial.Vendedores.Existe(id) == true)
+                {
+                    objVen = PriEngine.Engine.Comercial.Vendedores.Edita(id);
+                    myVend.CodVendedor = objVen.get_Vendedor();
+                    myVend.NomeVendedor = objVen.get_Nome();
+                   
+                    return myVend;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+                return null;
+
+        } 
+
+        #endregion Vendedor;
+
         #region Artigo
 
         public static Lib_Primavera.Model.Artigo GetArtigo(string codArtigo)
