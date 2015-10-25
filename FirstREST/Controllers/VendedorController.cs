@@ -16,7 +16,7 @@ namespace FirstREST.Controllers
             return Lib_Primavera.PriIntegration.ListaVendedores();
         }
 
-        [Route("api/Vendedores/{id}")]
+        [Route("api/Vendedor/{id}")]
         [HttpGet]
         public Lib_Primavera.Model.Vendedor Get(string id)
         {
@@ -30,5 +30,11 @@ namespace FirstREST.Controllers
             return Lib_Primavera.PriIntegration.LeadsVendedor(id);
         }
 
+        [Route("api/Vendedor/{id}/clientes")]
+        [HttpGet]
+        public  IEnumerable<Lib_Primavera.Model.Cliente> GetVendedorClientes(string id)
+        {
+            return Lib_Primavera.PriIntegration.GetVendedorClientes(id);
+        }
     }
 }
