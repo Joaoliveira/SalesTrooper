@@ -148,7 +148,6 @@ C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\Entity
 C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\Microsoft.Data.Edm.dll
 C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\Microsoft.Data.OData.dll
 C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\Microsoft.Web.Infrastructure.dll
-C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\Newtonsoft.Json.dll
 C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\System.Net.Http.Formatting.dll
 C:\SINF\Code_Examples\Hello World INTEG PRIMAVERA\FirstREST\FirstREST\bin\System.Spatial.dll
