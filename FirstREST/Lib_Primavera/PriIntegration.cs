@@ -60,7 +60,7 @@ namespace FirstREST.Lib_Primavera
         {
 
 
-            GcpBECliente objCli = new GcpBECliente();
+             StdBELista objCli = new StdBELista();
 
 
             Model.Cliente myCli = new Model.Cliente();
@@ -70,12 +70,12 @@ namespace FirstREST.Lib_Primavera
 
                 if (PriEngine.Engine.Comercial.Clientes.Existe(codCliente) == true)
                 {
-                    objCli = PriEngine.Engine.Comercial.Clientes.Edita(codCliente);
-                    myCli.CodCliente = objCli.get_Cliente();
-                    myCli.NomeCliente = objCli.get_Nome();
-                    myCli.Moeda = objCli.get_Moeda();
-                    myCli.NumContribuinte = objCli.get_NumContribuinte();
-                    myCli.Morada = objCli.get_Morada();
+                    objCli = PriEngine.Engine.Consulta("SELECT * FROM Clientes WHERE Cliente =" + "\'" + codCliente + "\'");
+                    myCli.CodCliente = objCli.Valor("Cliente");
+                    myCli.NomeCliente = objCli.Valor("Nome");
+                    myCli.Moeda = objCli.Valor("Moeda");
+                    myCli.NumContribuinte = objCli.Valor("NumContrib");
+                    myCli.Morada = objCli.Valor("Morada");
                     return myCli;
                 }
                 else
@@ -111,6 +111,7 @@ namespace FirstREST.Lib_Primavera
 
                         objCli = PriEngine.Engine.Comercial.Clientes.Edita(cliente.CodCliente);
                         objCli.set_EmModoEdicao(true);
+                        
 
                         objCli.set_Nome(cliente.NomeCliente);
                         objCli.set_NumContribuinte(cliente.NumContribuinte);
@@ -118,6 +119,7 @@ namespace FirstREST.Lib_Primavera
                         objCli.set_Morada(cliente.Morada);
 
                         PriEngine.Engine.Comercial.Clientes.Actualiza(objCli);
+                       
 
                         erro.Erro = 0;
                         erro.Descricao = "Sucesso";
@@ -307,7 +309,7 @@ namespace FirstREST.Lib_Primavera
 
         public static Lib_Primavera.Model.Vendedor GetVendedor(string id)
         {
-            GcpBEVendedor objVen = new GcpBEVendedor();
+            StdBELista objVen = new StdBELista();
 
 
             Model.Vendedor myVend = new Model.Vendedor();
@@ -317,9 +319,9 @@ namespace FirstREST.Lib_Primavera
 
                 if (PriEngine.Engine.Comercial.Vendedores.Existe(id) == true)
                 {
-                    objVen = PriEngine.Engine.Comercial.Vendedores.Edita(id);
-                    myVend.CodVendedor = objVen.get_Vendedor();
-                    myVend.NomeVendedor = objVen.get_Nome();
+                    objVen = PriEngine.Engine.Consulta("SELECT * FROM Vendedores WHERE Vendedor = " + "\'" + id + "\'");
+                    myVend.CodVendedor = objVen.Valor("Vendedor");
+                    myVend.NomeVendedor = objVen.Valor("Nome");
 
                     return myVend;
                 }
