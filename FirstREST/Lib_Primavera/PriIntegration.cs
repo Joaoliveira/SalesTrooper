@@ -75,7 +75,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.NomeCliente = objCli.Valor("Nome");
                     myCli.Moeda = objCli.Valor("Moeda");
                     myCli.NumContribuinte = objCli.Valor("NumContrib");
-                    myCli.Morada = objCli.Valor("Morada");
+                    myCli.Morada = objCli.Valor("Fac_Mor");
                     return myCli;
                 }
                 else
@@ -827,5 +827,107 @@ namespace FirstREST.Lib_Primavera
         }
 
         #endregion DocsVenda
+
+        #region Tarefas
+
+        public static List<Model.Tarefa> ListaTarefas()
+        {
+
+
+            StdBELista objList;
+
+            List<Model.Tarefa> listTarefas = new List<Model.Tarefa>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+
+                objList = PriEngine.Engine.Consulta("SELECT * FROM  TAREFAS");
+
+
+                while (!objList.NoFim())
+                {
+                    listTarefas.Add(new Model.Tarefa
+                    {
+                        Id = objList.Valor("Id"),
+                        TipoAtividade = objList.Valor("IdTipoActividade"),
+                        Prioridade = objList.Valor("Prioridade"),
+                        Estado = objList.Valor("Estado"),
+                        Resumo = objList.Valor("Resumo"),
+                        Descricao = objList.Valor("Descricao"),
+                        EntidadePrincipal = objList.Valor("EntidadePrincipal"),
+                        idContactoPrincipal = objList.Valor("IdContactoPrincipal"),
+                        DataDeInicio = objList.Valor("DataInicio"),
+                        DataDeFim = objList.Valor("DataFim"),
+                        LocalRealizacao = objList.Valor("LocalRealizacao"),
+                        Utilizador = objList.Valor("Utilizador"),
+                        DataUltimaAtualizacao = objList.Valor("DataUltAct"),
+                        TodoDia = objList.Valor("TodoDia"),
+                        PeriodoAntecedencia = objList.Valor("PeriodoAntecedencia"),
+                        ResponsavelPor = objList.Valor("ResponsavelPor"),
+                        idCabecalhoOportunidadeVenda = objList.Valor("IDCabecOVenda"),
+                        DataLimiteRealizacao = objList.Valor("DataLimiteRealizacao")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listTarefas;
+            }
+            else
+                return null;
+        }
+
+        public static Lib_Primavera.Model.Tarefa GetTarefa(string id)
+        {
+
+
+            StdBELista objList = new StdBELista();
+
+
+            Model.Tarefa myTar = new Model.Tarefa();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT * FROM TAREFAS WHERE Id =" + "\'" + id + "\'");
+
+
+                if (objList.NumLinhas() == 1)
+                {
+                   
+                   
+                    
+                        myTar.Id = objList.Valor("Id");
+                        myTar.TipoAtividade = objList.Valor("IdTipoActividade");
+                        myTar.Prioridade = objList.Valor("Prioridade");
+                        myTar.Estado = objList.Valor("Estado");
+                        myTar.Resumo = objList.Valor("Resumo");
+                        myTar.Descricao = objList.Valor("Descricao");
+                        myTar.EntidadePrincipal = objList.Valor("EntidadePrincipal");
+                        myTar.idContactoPrincipal = objList.Valor("idContactoPrincipal");
+                        myTar.DataDeInicio = objList.Valor("DataInicio");
+                        myTar.DataDeFim = objList.Valor("DataFim");
+                        myTar.LocalRealizacao = objList.Valor("LocalRealizacao");
+                        myTar.Utilizador = objList.Valor("Utilizador");
+                        myTar.DataUltimaAtualizacao = objList.Valor("DataUltAct");
+                        myTar.TodoDia = objList.Valor("TodoDia");
+                        myTar.PeriodoAntecedencia = objList.Valor("PeriodoAntecedencia");
+                        myTar.ResponsavelPor = objList.Valor("ResponsavelPor");
+                        myTar.idCabecalhoOportunidadeVenda = objList.Valor("IDCabecOVenda");
+                        myTar.DataLimiteRealizacao = objList.Valor("DataLimiteRealizacao");
+                    return myTar;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+                return null;
+        }
+
+
+        #endregion Tarefas
     }
 }
+       
