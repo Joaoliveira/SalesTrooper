@@ -11,15 +11,16 @@ namespace FirstREST.Controllers
 {
     public class ClientesController : ApiController
     {
-        //
-        // GET: /Clientes/
+        [Route("api/clients")]
+        [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Cliente> Get()
         {
                 return Lib_Primavera.PriIntegration.ListaClientes();
         }
 
 
-        // GET api/cliente/5    
+        [Route("api/clients/{id}")]
+        [HttpGet]   
         public Cliente Get(string id)
         {
             Lib_Primavera.Model.Cliente cliente = Lib_Primavera.PriIntegration.GetCliente(id);
@@ -35,7 +36,8 @@ namespace FirstREST.Controllers
             }
         }
 
-
+        [Route("api/clients")]
+        [HttpPost] 
         public HttpResponseMessage Post(Lib_Primavera.Model.Cliente cliente)
         {
             Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
@@ -57,7 +59,8 @@ namespace FirstREST.Controllers
 
         }
 
-
+        [Route("api/clients")]
+        [HttpPut]
         public HttpResponseMessage Put(string id, Lib_Primavera.Model.Cliente cliente)
         {
 
@@ -83,7 +86,8 @@ namespace FirstREST.Controllers
         }
 
 
-
+        [Route("api/clients")]
+        [HttpDelete]
         public HttpResponseMessage Delete(string id)
         {
 

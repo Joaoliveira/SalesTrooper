@@ -517,7 +517,7 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda WHERE Oportunidade = " + "\'" + id + "\'");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
 
 
                 while (!objList.NoFim())
@@ -533,7 +533,8 @@ namespace FirstREST.Lib_Primavera
 
                 }
 
-                return listLeads[0];
+                if (listLeads.Count > 0) return listLeads[0];
+                else return null;
             }
             else
                 return null;
@@ -926,8 +927,52 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
+        public static List<Lib_Primavera.Model.Tarefa> GetTarefasLead(string idLead)
+        {
+            StdBELista objList = new StdBELista();
 
+            List<Lib_Primavera.Model.Tarefa> results = new List<Model.Tarefa>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(),
+                FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT * FROM Tarefas WHERE IDCabecOVenda = \'" + idLead + "\'");
+
+                while (!objList.NoFim())
+                {
+                    results.Add(new Model.Tarefa
+                    {
+                        Id = objList.Valor("Id"),
+                        TipoAtividade = objList.Valor("IdTipoActividade"),
+                        Prioridade = objList.Valor("Prioridade"),
+                        Estado = objList.Valor("Estado"),
+                        Resumo = objList.Valor("Resumo"),
+                        Descricao = objList.Valor("Descricao"),
+                        EntidadePrincipal = objList.Valor("EntidadePrincipal"),
+                        idContactoPrincipal = objList.Valor("IdContactoPrincipal"),
+                        DataDeInicio = objList.Valor("DataInicio"),
+                        DataDeFim = objList.Valor("DataFim"),
+                        LocalRealizacao = objList.Valor("LocalRealizacao"),
+                        Utilizador = objList.Valor("Utilizador"),
+                        DataUltimaAtualizacao = objList.Valor("DataUltAct"),
+                        TodoDia = objList.Valor("TodoDia"),
+                        PeriodoAntecedencia = objList.Valor("PeriodoAntecedencia"),
+                        ResponsavelPor = objList.Valor("ResponsavelPor"),
+                        idCabecalhoOportunidadeVenda = objList.Valor("IDCabecOVenda"),
+                        DataLimiteRealizacao = objList.Valor("DataLimiteRealizacao")
+                    });
+                    objList.Seguinte();
+                }
+
+                return results;
+            }
+
+            return null;
+
+        }
         #endregion Tarefas
+
+        
     }
 }
        
