@@ -402,7 +402,7 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
-        public static List<Model.Tarefa> GetVendedorTarefas(string id)
+        public static List<Model.Tarefa> GetVendedorTarefas(string id, string dataInicio, string dataFim)
         {
 
 
@@ -415,7 +415,10 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT * FROM Tarefas, CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\' AND  IdCabecOVenda = CabecOportunidadesVenda.ID");
+                objList = PriEngine.Engine.Consulta("SELECT * FROM Tarefas, CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\' AND  IdCabecOVenda = CabecOportunidadesVenda.ID"
+                        + " AND DataInicio >= \'" + dataInicio + "\'"
+                        + " AND DataFim <= \'" + dataFim + "\'"
+                    );
 
 
                 while (!objList.NoFim())

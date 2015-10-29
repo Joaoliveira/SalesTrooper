@@ -39,9 +39,9 @@ namespace FirstREST.Controllers
 
         [Route("api/salesmen/{id}/tasks")]
         [HttpGet]
-        public IEnumerable<Lib_Primavera.Model.Tarefa> GetVendedorTarefas(string id)
+        public IEnumerable<Lib_Primavera.Model.Tarefa> GetVendedorTarefas(string id, [FromUri] string dataInicio, [FromUri] string dataFim)
         {
-            return Lib_Primavera.PriIntegration.GetVendedorTarefas(id);
+            return Lib_Primavera.PriIntegration.GetVendedorTarefas(id, dataInicio, dataFim);
         }
     }
 }
