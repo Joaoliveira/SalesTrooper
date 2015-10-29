@@ -1050,9 +1050,9 @@ namespace FirstREST.Lib_Primavera
                     myAct.set_DataUltAct(tarefa.DataUltimaAtualizacao);
                     myAct.set_TodoDia(tarefa.TodoDia);
                     //myAct.set_PeriodoAntecedencia(tarefa.PeriodoAntecedencia);// miss match de parametros
-                    //myAct.set_ResponsavelPor(tarefa.ResponsavelPor); // miss match de parametros
+                    //myAct.set_ResponsavelPor(tarefa.ResponsavelPor); // nao existe
                     myAct.set_IDCabecOVenda(tarefa.idCabecalhoOportunidadeVenda);
-                    //myAct.set_DataLimiteRealizacao(tarefa.DataLimiteRealizacao); //nao existe
+                    //myAct.set_DataLimiteRealizacao(tarefa.DataLimiteRealizacao); //miss match de parametros
 
                     PriEngine.Engine.CRM.Actividades.Actualiza(myAct);
 

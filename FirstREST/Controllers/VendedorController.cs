@@ -9,28 +9,28 @@ namespace FirstREST.Controllers
 {
     public class VendedorController : ApiController
     {
-        [Route("api/Vendedores")]
+        [Route("api/salesmen")]
         [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Vendedor> Get()
         {
             return Lib_Primavera.PriIntegration.ListaVendedores();
         }
 
-        [Route("api/Vendedor/{id}")]
+        [Route("api/salesmen/{id}")]
         [HttpGet]
         public Lib_Primavera.Model.Vendedor Get(string id)
         {
             return Lib_Primavera.PriIntegration.GetVendedor(id);
         }
 
-        [Route("api/Vendedores/{id}/leads")]
+        [Route("api/salesmen/{id}/leads")]
         [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Lead> GetL(string id)
         {
             return Lib_Primavera.PriIntegration.LeadsVendedor(id);
         }
 
-        [Route("api/Vendedor/{id}/clientes")]
+        [Route("api/salesmen/{id}/clients")]
         [HttpGet]
         public  IEnumerable<Lib_Primavera.Model.Cliente> GetVendedorClientes(string id)
         {

@@ -12,7 +12,7 @@ namespace FirstREST.Controllers
     public class TarefasController : ApiController
     {
         // GET api/Tarefas
-        [Route("api/tarefas/")]
+        [Route("api/tasks/")]
         [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Tarefa> Get()
         {
@@ -20,7 +20,7 @@ namespace FirstREST.Controllers
         }
 
         // GET api/Tarefas/5
-        [Route("api/tarefas/{id}/")]
+        [Route("api/tasks/{id}/")]
         [HttpGet]
         public Tarefa Get(string id)
         {
@@ -39,7 +39,7 @@ namespace FirstREST.Controllers
         }
 
         // POST api/<controller>
-        [Route("api/task")]
+        [Route("api/tasks")]
         [HttpPost] 
         public HttpResponseMessage Post(Lib_Primavera.Model.Tarefa tarefa)
         {
@@ -64,7 +64,7 @@ namespace FirstREST.Controllers
         
 
         // PUT api/<controller>/5
-        [Route("api/tarefas/{id}/")]
+        [Route("api/tasks/{id}/")]
         [HttpPut]
         public HttpResponseMessage Put(string id, [FromBody]string value)
         {

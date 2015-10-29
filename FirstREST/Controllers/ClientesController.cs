@@ -118,7 +118,7 @@ namespace FirstREST.Controllers
 
         }
 
-        [Route("api/Cliente/{customerId}/Leads")]
+        [Route("api/clients/{customerId}/leads")]
         [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Lead> FindCostumerLeads(string customerId)
         {
