@@ -12,12 +12,16 @@ namespace FirstREST.Controllers
     public class TarefasController : ApiController
     {
         // GET api/Tarefas
+        [Route("api/tarefas/")]
+        [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Tarefa> Get()
         {
             return Lib_Primavera.PriIntegration.ListaTarefas();
         }
 
         // GET api/Tarefas/5
+        [Route("api/tarefas/{id}/")]
+        [HttpGet]
         public Tarefa Get(string id)
         {
             Lib_Primavera.Model.Tarefa tarefa = Lib_Primavera.PriIntegration.GetTarefa(id);
@@ -60,8 +64,29 @@ namespace FirstREST.Controllers
         
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        [Route("api/tarefas/{id}/")]
+        [HttpPut]
+        public HttpResponseMessage Put(string id, [FromBody]string value)
         {
+            Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
+
+            try
+            {
+                erro = Lib_Primavera.PriIntegration.UpdTarefa(id, value);
+                if (erro.Erro == 0)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, erro.Descricao);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound, erro.Descricao);
+                }
+            }
+
+            catch (Exception exc)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
+            }
         }
 
         // DELETE api/<controller>/5

@@ -61,7 +61,7 @@ namespace FirstREST.Lib_Primavera
         {
 
 
-             StdBELista objCli = new StdBELista();
+            StdBELista objCli = new StdBELista();
 
 
             Model.Cliente myCli = new Model.Cliente();
@@ -112,7 +112,7 @@ namespace FirstREST.Lib_Primavera
 
                         objCli = PriEngine.Engine.Comercial.Clientes.Edita(cliente.CodCliente);
                         objCli.set_EmModoEdicao(true);
-                        
+
 
                         objCli.set_Nome(cliente.NomeCliente);
                         objCli.set_NumContribuinte(cliente.NumContribuinte);
@@ -120,7 +120,7 @@ namespace FirstREST.Lib_Primavera
                         objCli.set_Morada(cliente.Morada);
 
                         PriEngine.Engine.Comercial.Clientes.Actualiza(objCli);
-                       
+
 
                         erro.Erro = 0;
                         erro.Descricao = "Sucesso";
@@ -896,27 +896,24 @@ namespace FirstREST.Lib_Primavera
 
                 if (objList.NumLinhas() == 1)
                 {
-                   
-                   
-                    
-                        myTar.Id = objList.Valor("Id");
-                        myTar.TipoAtividade = objList.Valor("IdTipoActividade");
-                        myTar.Prioridade = objList.Valor("Prioridade");
-                        myTar.Estado = objList.Valor("Estado");
-                        myTar.Resumo = objList.Valor("Resumo");
-                        myTar.Descricao = objList.Valor("Descricao");
-                        myTar.EntidadePrincipal = objList.Valor("EntidadePrincipal");
-                        myTar.idContactoPrincipal = objList.Valor("idContactoPrincipal");
-                        myTar.DataDeInicio = objList.Valor("DataInicio");
-                        myTar.DataDeFim = objList.Valor("DataFim");
-                        myTar.LocalRealizacao = objList.Valor("LocalRealizacao");
-                        myTar.Utilizador = objList.Valor("Utilizador");
-                        myTar.DataUltimaAtualizacao = objList.Valor("DataUltAct");
-                        myTar.TodoDia = objList.Valor("TodoDia");
-                        myTar.PeriodoAntecedencia = objList.Valor("PeriodoAntecedencia");
-                        myTar.ResponsavelPor = objList.Valor("ResponsavelPor");
-                        myTar.idCabecalhoOportunidadeVenda = objList.Valor("IDCabecOVenda");
-                        myTar.DataLimiteRealizacao = objList.Valor("DataLimiteRealizacao");
+                    myTar.Id = objList.Valor("Id");
+                    myTar.TipoAtividade = objList.Valor("IdTipoActividade");
+                    myTar.Prioridade = objList.Valor("Prioridade");
+                    myTar.Estado = objList.Valor("Estado");
+                    myTar.Resumo = objList.Valor("Resumo");
+                    myTar.Descricao = objList.Valor("Descricao");
+                    myTar.EntidadePrincipal = objList.Valor("EntidadePrincipal");
+                    myTar.idContactoPrincipal = objList.Valor("idContactoPrincipal");
+                    myTar.DataDeInicio = objList.Valor("DataInicio");
+                    myTar.DataDeFim = objList.Valor("DataFim");
+                    myTar.LocalRealizacao = objList.Valor("LocalRealizacao");
+                    myTar.Utilizador = objList.Valor("Utilizador");
+                    myTar.DataUltimaAtualizacao = objList.Valor("DataUltAct");
+                    myTar.TodoDia = objList.Valor("TodoDia");
+                    myTar.PeriodoAntecedencia = objList.Valor("PeriodoAntecedencia");
+                    myTar.ResponsavelPor = objList.Valor("ResponsavelPor");
+                    myTar.idCabecalhoOportunidadeVenda = objList.Valor("IDCabecOVenda");
+                    myTar.DataLimiteRealizacao = objList.Valor("DataLimiteRealizacao");
                     return myTar;
                 }
                 else
@@ -972,13 +969,64 @@ namespace FirstREST.Lib_Primavera
 
         }
 
+        public static Lib_Primavera.Model.RespostaErro UpdTarefa(string id, string value)
+        {
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+
+
+            CrmBEActividade objAtiv = new CrmBEActividade();
+
+            try
+            {
+
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    if (PriEngine.Engine.CRM.Actividades.Existe(id) == false)
+                    {
+                        erro.Erro = 1;
+                        erro.Descricao = "O cliente não existe";
+                        return erro;
+                    }
+                    else
+                    {
+
+                        objAtiv = PriEngine.Engine.CRM.Actividades.Edita(id);
+                        objAtiv.set_EmModoEdicao(true);
+
+                        objAtiv.set_Estado(value);
+
+                        PriEngine.Engine.CRM.Actividades.Actualiza(objAtiv);
+
+
+                        erro.Erro = 0;
+                        erro.Descricao = "Sucesso";
+                        return erro;
+                    }
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir a empresa";
+                    return erro;
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+        }
 
         public static Lib_Primavera.Model.RespostaErro InsereTarefaObj(Model.Tarefa tarefa)
         {
 
             Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
-            
-           
+
+
             CrmBEActividade myAct = new CrmBEActividade();// Actividades
 
             try
@@ -1034,7 +1082,6 @@ namespace FirstREST.Lib_Primavera
 
         #endregion Tarefas
 
-        
+
     }
 }
-       
