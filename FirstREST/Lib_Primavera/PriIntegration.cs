@@ -402,6 +402,55 @@ namespace FirstREST.Lib_Primavera
                 return null;
         }
 
+        public static List<Model.Tarefa> GetVendedorTarefas(string id)
+        {
+
+
+            StdBELista objList;
+
+            List<Model.Tarefa> listTarefas = new List<Model.Tarefa>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+                //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
+
+                objList = PriEngine.Engine.Consulta("SELECT * FROM Tarefas, CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\' AND  IdCabecOVenda = CabecOportunidadesVenda.ID");
+
+
+                while (!objList.NoFim())
+                {
+                    listTarefas.Add(new Model.Tarefa
+                    {
+                        Id = objList.Valor("Id"),
+                        TipoAtividade = objList.Valor("IdTipoActividade"),
+                        Prioridade = objList.Valor("Prioridade"),
+                        Estado = objList.Valor("Estado"),
+                        Resumo = objList.Valor("Resumo"),
+                        Descricao = objList.Valor("Descricao"),
+                        EntidadePrincipal = objList.Valor("EntidadePrincipal"),
+                        idContactoPrincipal = objList.Valor("IdContactoPrincipal"),
+                        DataDeInicio = objList.Valor("DataInicio"),
+                        DataDeFim = objList.Valor("DataFim"),
+                        LocalRealizacao = objList.Valor("LocalRealizacao"),
+                        Utilizador = objList.Valor("Utilizador"),
+                        DataUltimaAtualizacao = objList.Valor("DataUltAct"),
+                        TodoDia = objList.Valor("TodoDia"),
+                        PeriodoAntecedencia = objList.Valor("PeriodoAntecedencia"),
+                        ResponsavelPor = objList.Valor("ResponsavelPor"),
+                        idCabecalhoOportunidadeVenda = objList.Valor("IDCabecOVenda"),
+                        DataLimiteRealizacao = objList.Valor("DataLimiteRealizacao")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listTarefas;
+            }
+            else
+                return null;
+        }
+
 
         #endregion Vendedor;
 
@@ -984,7 +1033,7 @@ namespace FirstREST.Lib_Primavera
                     if (PriEngine.Engine.CRM.Actividades.Existe(id) == false)
                     {
                         erro.Erro = 1;
-                        erro.Descricao = "O cliente não existe";
+                        erro.Descricao = "A tarefa não existe";
                         return erro;
                     }
                     else
