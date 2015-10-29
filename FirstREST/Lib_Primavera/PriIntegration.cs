@@ -7,6 +7,7 @@ using Interop.ErpBS800;
 using Interop.StdPlatBS800;
 using Interop.StdBE800;
 using Interop.GcpBE800;
+using Interop.CrmBE800;
 using ADODB;
 using Interop.IGcpBS800;
 //using Interop.StdBESql800;
@@ -611,7 +612,7 @@ namespace FirstREST.Lib_Primavera
             GcpBELinhaDocumentoCompra myLin = new GcpBELinhaDocumentoCompra();
             GcpBELinhasDocumentoCompra myLinhas = new GcpBELinhasDocumentoCompra();
 
-            PreencheRelacaoCompras rl = new PreencheRelacaoCompras();
+            Interop.GcpBE800.PreencheRelacaoCompras rl = new Interop.GcpBE800.PreencheRelacaoCompras();
             List<Model.LinhaDocCompra> lstlindv = new List<Model.LinhaDocCompra>();
 
             try
@@ -674,7 +675,7 @@ namespace FirstREST.Lib_Primavera
 
             GcpBELinhasDocumentoVenda myLinhas = new GcpBELinhasDocumentoVenda();
 
-            PreencheRelacaoVendas rl = new PreencheRelacaoVendas();
+            Interop.GcpBE800.PreencheRelacaoVendas rl = new Interop.GcpBE800.PreencheRelacaoVendas();
             List<Model.LinhaDocVenda> lstlindv = new List<Model.LinhaDocVenda>();
 
             try
@@ -970,6 +971,67 @@ namespace FirstREST.Lib_Primavera
             return null;
 
         }
+
+
+        public static Lib_Primavera.Model.RespostaErro InsereTarefaObj(Model.Tarefa tarefa)
+        {
+
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+            
+           
+            CrmBEActividade myAct = new CrmBEActividade();// Actividades
+
+            try
+            {
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+
+                    myAct.set_ID(tarefa.Id);
+                    myAct.set_IDTipoActividade(tarefa.TipoAtividade);
+                    //myAct.set_Prioridade(tarefa.Prioridade);// miss match de parametros
+                    //myAct.set_Estado(tarefa.Estado);// miss match de parametros
+                    myAct.set_Resumo(tarefa.Resumo);
+                    myAct.set_Descricao(tarefa.Descricao);
+                    myAct.set_EntidadePrincipal(tarefa.EntidadePrincipal);
+                    //myAct.set_Contacto(tarefa.Contacto); // nao existe
+                    myAct.set_IDContactoPrincipal(tarefa.idContactoPrincipal);
+                    myAct.set_DataInicio(tarefa.DataDeInicio);
+                    myAct.set_DataFim(tarefa.DataDeFim);
+                    myAct.set_LocalRealizacao(tarefa.LocalRealizacao);
+                    myAct.set_Utilizador(tarefa.Utilizador);
+                    myAct.set_DataUltAct(tarefa.DataUltimaAtualizacao);
+                    myAct.set_TodoDia(tarefa.TodoDia);
+                    //myAct.set_PeriodoAntecedencia(tarefa.PeriodoAntecedencia);// miss match de parametros
+                    //myAct.set_ResponsavelPor(tarefa.ResponsavelPor); // miss match de parametros
+                    myAct.set_IDCabecOVenda(tarefa.idCabecalhoOportunidadeVenda);
+                    //myAct.set_DataLimiteRealizacao(tarefa.DataLimiteRealizacao); //nao existe
+
+                    PriEngine.Engine.CRM.Actividades.Actualiza(myAct);
+
+                    erro.Erro = 0;
+                    erro.Descricao = "Sucesso";
+                    return erro;
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir empresa";
+                    return erro;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+
+
+        }
+
+
+
         #endregion Tarefas
 
         
