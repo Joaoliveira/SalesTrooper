@@ -201,7 +201,6 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                Console.WriteLine(codCliente);
                 objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda WHERE Entidade = " + "\'" + codCliente + "\'");
 
 
@@ -1135,5 +1134,44 @@ namespace FirstREST.Lib_Primavera
         #endregion Tarefas
 
 
+        #region Faturas
+        internal static IEnumerable<Model.Fatura> FaturasCliente(string id)
+        {
+            StdBELista objList;
+
+            List<Model.Fatura> listFaturas = new List<Model.Fatura>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta(
+                    "SELECT Id, Data, NumDoc, TotalMerc, TotalIva, TotalOutros, Moeda, DataVencimento FROM CabecDoc WHERE " +
+                    "TipoEntidade = \'C\' AND " +
+                    "TipoDoc = \'FA\' AND " +
+                    "Entidade =\'" + id + "\'");
+
+
+                while (!objList.NoFim())
+                {
+                    listFaturas.Add(new Model.Fatura
+                    {
+                        Id = objList.Valor("Id"),
+                        Data = objList.Valor("Data"),
+                        NumDoc = objList.Valor("NumDoc"),
+                        TotalMerc = objList.Valor("TotalMerc"),
+                        TotalIva = objList.Valor("TotalIva"),
+                        TotalOutros = objList.Valor("TotalOutros"),
+                        Moeda = objList.Valor("Moeda"),
+                        DataVencimento = objList.Valor("DataVencimento")
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listFaturas;
+            }
+            else
+                return null;
+        }
+        #endregion Faturas
     }
 }

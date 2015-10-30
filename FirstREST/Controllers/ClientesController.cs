@@ -124,5 +124,12 @@ namespace FirstREST.Controllers
         {
             return Lib_Primavera.PriIntegration.LeadsCliente(customerId);
         }
+
+        [Route("api/clients/{id}/invoices")]
+        [HttpGet]
+        public IEnumerable<Lib_Primavera.Model.Fatura> ClientInvoices(string id)
+        {
+            return Lib_Primavera.PriIntegration.FaturasCliente(id);
+        }
     }
 }
