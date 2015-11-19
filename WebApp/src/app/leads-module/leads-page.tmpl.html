@@ -1,0 +1,37 @@
+<md-content class="padded-content-page">
+
+<div class="margin-bottom-100" layout="row" layout-align="center center">
+	<h2 class="md-display-3" translate>Lead example</h2>
+</div>
+<div class="bar margin-top-150">
+	<p class="bar-steps">Quente</p>
+	<p class="bar-steps">quente</p>
+	<p class="bar-steps">quente</p>
+	<p class="bar-steps">até</p>
+	<p class="bar-steps">queimar!</p>
+	<md-progress-linear class="md-accent margin-bottom-100" md-mode="determinate" value="60"></md-progress-linear>
+</div>
+<div layout="row" layout-align="center center">
+	<img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" align="left" class="margin-right-50">
+	<p id="lead-desc" align="justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+	<div id="tasks">
+		<md-select placeholder="Tasks" ng-model="vm.buttonClass">
+		<md-option value="md-primary">1</md-option>
+		<md-option value="md-primary">2</md-option>
+		<md-option value="md-primary">3</md-option>
+		<md-option value="md-primary">4</md-option>
+		<md-option value="md-primary">5</md-option>
+	</md-select>
+</div>
+</div>
+<div class="margin-top-150" layout="row" layout-align="center center">
+	<h3 translate>Location</h3>
+</div>
+<div class="map-lead margin-bottom-20">
+	<div id="map_terrain_canvas">
+		<ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
+		<ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
+	</ui-gmap-google-map>
+</div>
+</div>
+</md-content>

@@ -59,7 +59,7 @@
             palette: 'cyan:500',
             classes: 'widget-overlay-title'
         },{
-            title: 'Christos Pantazis',
+            title: 'Vítor Pantazis',
             subtitle: 'CEO Facebook',
             date:'23/6/2015',
             image: 'assets/images/avatars/hair-blonde-eyes-blue-green-skin-light.png',

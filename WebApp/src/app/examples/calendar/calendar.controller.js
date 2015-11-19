@@ -112,7 +112,7 @@
         }
 
         function createRandomEvents(number, startDate, endDate) {
-            var eventNames = ['Pick up the kids', 'Remember the milk', 'Meeting with Morris', 'Car service',  'Go Surfing', 'Party at Christos house', 'Beer Oclock', 'Festival tickets', 'Laundry!', 'Haircut appointment', 'Walk the dog', 'Dentist :(', 'Board meeting', 'Go fishing'];
+            var eventNames = ['Pick up the kids', 'Remember the milk', 'Meeting with Morris', 'Car service',  'Go Surfing', 'Party at Vítor house', 'Beer Oclock', 'Festival tickets', 'Laundry!', 'Haircut appointment', 'Walk the dog', 'Dentist :(', 'Board meeting', 'Go fishing'];
             var locationNames = ['London', 'New York', 'Paris', 'Burnley'];
             for(var x = 0; x < number; x++) {
                 var randomMonthDate = randomDate(startDate, endDate);
