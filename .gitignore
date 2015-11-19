@@ -3,3 +3,5 @@ FirstREST/obj/Debug/
 FirstREST.Tests/
 FirstREST.v12.suo
 FirstREST.Tests/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+/WebApp/*
+!/WebApp/src
