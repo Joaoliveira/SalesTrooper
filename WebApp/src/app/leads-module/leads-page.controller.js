@@ -7,6 +7,16 @@
 
     /* @ngInject */
     function LeadPageController(uiGmapGoogleMapApi) {
+
+        $.ajax({
+            url:'http://localhost:49822/api/leads/816B85C7-98E3-11DC-A3E8-0020E024149C/tasks', 
+            type:'get', 
+            success: function (response) {
+            for (var i = 0; i < response.length; i++) {
+                $('#task-div').before('<md-divider ></md-divider><md-list-item class="md-1-line"><div class="md-list-item-text"><p>' + response[i]['Resumo'] + '</p></div></md-list-item>');
+            }
+            console.log('done');
+            }});
         var vm = this;
         uiGmapGoogleMapApi.then(function(maps) {
             vm.terrainMap = {
