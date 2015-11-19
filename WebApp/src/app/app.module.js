@@ -8,7 +8,7 @@
             'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular), 'ngFileUpload',
             'leads-module',
             // uncomment above to activate the example seed module
-	
+	        'dashboard-module',
             'app.examples'
         ])
         // create a constant for languages so they can be added to both triangular & translate
