@@ -2,27 +2,16 @@
     <div layout="row" layout-align="center center">
         <h2 class="md-display-3" translate>DASHBOARD</h2>
     </div>
+    <md-list>
+        <md-subheader class="md-no-sticky">Tasks</md-subheader>
+        <md-list-item class="md-3-line" ng-repeat="task in vm.tasks">
+            <md-checkbox ng-model="item.selected"></md-checkbox>
+            <div class="md-list-item-text">
+                <h3>{{ task.Descricao }}</h3>
+                <h4>{{ task.Resumo }}</h4>
+                <p>{{ task.DataDeInicio | date: 'dd/MM/yyyy HH:mm'}}</p>
+            </div>
+        </md-list-item>
+    </md-list>
 
-    <label>First 5 Tasks</label>
-
-    <div id="tasks">
-        <md-list>
-            <md-subheader class="md-no-sticky">My Tasks</md-subheader>
-                <div id="task-div"></div>
-        </md-list>
-    </div>
-
-<!--    <md-option value="1">Task1</md-option>
-    <md-option value="2">Taks2</md-option>
-    <md-option value="3">Task3</md-option>
-    <md-option value="4">Task4</md-option>
-    <md-option value="4">Task5</md-option>
-</md-select>-->
-    <!--<div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
-    </div>-->
 </md-content>
