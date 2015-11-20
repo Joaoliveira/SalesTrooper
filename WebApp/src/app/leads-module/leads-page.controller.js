@@ -9,7 +9,7 @@
     function LeadPageController(uiGmapGoogleMapApi) {
 
         $.ajax({
-            url:'http://localhost:49822/api/leads/816B85C7-98E3-11DC-A3E8-0020E024149C/tasks', 
+            url:'http://127.0.0.1:49822/api/leads/816B85C7-98E3-11DC-A3E8-0020E024149C/tasks', 
             type:'get', 
             success: function (response) {
                 for (var i = 0; i < response.length; i++) {
