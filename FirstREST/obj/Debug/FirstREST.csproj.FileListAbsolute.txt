@@ -280,3 +280,6 @@ C:\Users\user\Desktop\SalesTrooper\FirstREST\bin\zh-Hant\System.Spatial.resource
 C:\Users\user\Desktop\SalesTrooper\FirstREST\obj\Debug\FirstREST.csprojResolveAssemblyReference.cache
 C:\Users\user\Desktop\SalesTrooper\FirstREST\obj\Debug\FirstREST.dll
 C:\Users\user\Desktop\SalesTrooper\FirstREST\obj\Debug\FirstREST.pdb
+C:\Users\user\Desktop\SalesTrooper\FirstREST\bin\System.Web.Cors.dll
+C:\Users\user\Desktop\SalesTrooper\FirstREST\bin\System.Web.Http.Cors.dll
+C:\Users\user\Desktop\SalesTrooper\FirstREST\bin\System.Web.Http.Cors.xml

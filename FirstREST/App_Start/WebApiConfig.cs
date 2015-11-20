@@ -10,6 +10,9 @@ namespace FirstREST
     {
         public static void Register(HttpConfiguration config)
         {
+            
+            //enabling cors
+            config.EnableCors();
 
             //Attr routing
             config.MapHttpAttributeRoutes();
