@@ -20,7 +20,7 @@
 
         triMenuProvider.addMenu({
             name: 'Dashboard',
-            icon: 'zmdi zmdi-grade',
+            icon: 'zmdi zmdi-home',
             type: 'dropdown',
             priority: 1.1,
             children: [{
