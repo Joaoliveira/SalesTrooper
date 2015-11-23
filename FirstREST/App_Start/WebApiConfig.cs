@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Net.Http.Headers;
+using System.Web.Http.Cors;
 
 namespace FirstREST
 {
@@ -12,7 +13,8 @@ namespace FirstREST
         {
             
             //enabling cors
-            config.EnableCors();
+            var corsAttr = new EnableCorsAttribute("http://localhost:3000", "*", "*");
+            config.EnableCors(corsAttr);
 
             //Attr routing
             config.MapHttpAttributeRoutes();

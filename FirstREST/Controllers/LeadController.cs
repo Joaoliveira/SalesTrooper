@@ -9,7 +9,6 @@ using System.Web.Http.Cors;
 namespace FirstREST.Controllers
 {
 
-     [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class LeadController : ApiController
     {
         [Route("api/leads")]
