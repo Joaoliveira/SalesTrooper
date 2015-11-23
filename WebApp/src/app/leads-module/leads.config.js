@@ -11,7 +11,7 @@
 
         $stateProvider
         .state('triangular.admin-default.leads-page', {
-            url: '/leads/lead',
+            url: '/leads/:leadID',
             templateUrl: 'app/leads-module/leads-page.tmpl.html',
             // set the controller to load for this page
             controller: 'LeadPageController',

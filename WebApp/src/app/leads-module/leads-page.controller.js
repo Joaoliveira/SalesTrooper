@@ -6,17 +6,24 @@
     .controller('LeadPageController', LeadPageController);
 
     /* @ngInject */
-    function LeadPageController(uiGmapGoogleMapApi) {
-
-        $.ajax({
-            url:'http://127.0.0.1:49822/api/leads/816B85C7-98E3-11DC-A3E8-0020E024149C/tasks', 
-            type:'get', 
-            success: function (response) {
-                for (var i = 0; i < response.length; i++) {
-                    $('#task-div').before('<md-divider ></md-divider><md-list-item class="md-1-line"><div class="md-list-item-text"><p>' + response[i]['Resumo'] + '</p></div></md-list-item>');
-                }
-            }});
+    function LeadPageController(uiGmapGoogleMapApi,$http, $stateParams) {
+        
         var vm = this;
+        vm.tasks = [];
+
+        var promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID);
+
+        promise.then(function requestDone (response) {
+           vm.lead = response.data;
+        });
+
+        promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID + '/tasks');
+
+        promise.then(function requestDone (response) {
+           vm.tasks = response.data;
+        });
+
+
         uiGmapGoogleMapApi.then(function(maps) {
             vm.terrainMap = {
                 center: {
@@ -43,6 +50,8 @@
                 mapTypeId:maps.MapTypeId.TERRAIN
             }
         };
+
     });
+        
     }
 })();

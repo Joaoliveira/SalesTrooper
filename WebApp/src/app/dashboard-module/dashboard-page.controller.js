@@ -19,7 +19,7 @@
             }
         };
 
-        var promise = $http.get('http://localhost:49822/api/salesmen/1/tasks/', config);
+        var promise = $http.get('http://127.0.0.1:49822/api/salesmen/1/tasks/', config);
 
         promise.then(function requestDone (response) {
             console.log(response);
