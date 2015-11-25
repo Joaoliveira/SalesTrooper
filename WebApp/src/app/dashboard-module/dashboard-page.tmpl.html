@@ -1,17 +1,29 @@
 <md-content class="padded-content-page">
+
     <div layout="row" layout-align="center center">
         <h2 class="md-display-3" translate>DASHBOARD</h2>
     </div>
-    <md-list>
-        <md-subheader class="md-no-sticky">Tasks</md-subheader>
-        <md-list-item class="md-3-line" ng-repeat="task in vm.tasks">
-            <md-checkbox ng-model="item.selected"></md-checkbox>
-            <div class="md-list-item-text">
-                <h3>{{ task.Descricao }}</h3>
-                <h4>{{ task.Resumo }}</h4>
-                <p>{{ task.DataDeInicio | date: 'dd/MM/yyyy HH:mm'}}</p>
-            </div>
-        </md-list-item>
-    </md-list>
+    <div layout="row">
+        <md-card flex>
+            <md-card-content>
+                <md-list>
+                    <md-subheader class="md-no-sticky">Tasks</md-subheader>
+                    <md-list-item class="md-3-line" ng-repeat="task in vm.tasks">
+                        <md-checkbox ng-model="item.selected"></md-checkbox>
+                        <div class="md-list-item-text">
+                            <h3>{{ task.Resumo }}</h3>
+                            <h4>{{ task.Descricao }}</h4>
+                            <p>{{ task.DataDeInicio | date: 'dd/MM/yyyy HH:mm'}}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-card-content>
+        </md-card>
+        <md-card flex>
+            <md-card-content>
+                <div class="margin-bottom-60" flex ui-calendar="vm.calendarOptions" ng-model="vm.eventSources" calendar="triangular-calendar" class="triangular-calendar"></div>
+            </md-card-content>
+        </md-card>
+    </div>
 
 </md-content>

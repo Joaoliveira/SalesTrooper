@@ -414,7 +414,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT * FROM Tarefas, CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\' AND  IdCabecOVenda = CabecOportunidadesVenda.ID"
+                objList = PriEngine.Engine.Consulta("SELECT Tarefas.* FROM Tarefas, CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\' AND  IdCabecOVenda = CabecOportunidadesVenda.ID"
                         + " AND DataInicio >= \'" + dataInicio + "\'"
                         + " AND DataFim <= \'" + dataFim + "\'"
                     );
