@@ -1,23 +1,12 @@
 <md-content class="padded-content-page">
 
-<div class="margin-bottom-100" layout="row" layout-align="center center">
-	<h2 class="md-display-3" translate>{{vm.lead.DescLead}}</h2>
-</div>
-<div class="bar margin-top-150">
-	<p class="bar-steps">Quente</p>
-	<p class="bar-steps">quente</p>
-	<p class="bar-steps">quente</p>
-	<p class="bar-steps">até</p>
-	<p class="bar-steps">queimar!</p>
-	<md-progress-linear class="md-accent margin-bottom-100" md-mode="determinate" value="60"></md-progress-linear>
-</div>
-<div layout="row" layout-align="center center">
-	<img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" align="left" class="margin-right-50">
-	<p id="lead-desc" align="justify"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+	
+<div class="margin-bottom-50" layout="row" layout-align="center">
+	<h1 class="md-display-3" style="font-size: 4vw;">{{vm.lead.DescLead}}</h1>
 </div>
 <md-card id="info" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
 	<md-toolbar>
-        <h2 class="md-toolbar-tools ng-scope" translate="">{{vm.lead.DescLead}}</h2>
+        <h2 class="md-toolbar-tools ng-scope" translate="">Lead's Info</h2>
     </md-toolbar>
     <div id="info-content" class="margin-10">
     	<div class="bar">
@@ -25,15 +14,23 @@
 			<md-progress-linear class="md-accent" md-mode="determinate" value="60"></md-progress-linear>
 		</div>
 		<div class="client margin-top-20">
-			CLIENT: <a><md-button ng-class="[vm.buttonClass, vm.buttonHue]" aria-label="flat button" 	style="text-transform:none">{{vm.lead.client.NomeCliente}}</md-button></a>
+			<h3>Client:</h3>
+			<!-- img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" align="left" class="img-circle margin-right-50" -->
+			<a><h4><md-button ng-class="[vm.buttonClass, vm.buttonHue]" aria-label="flat button" 	style="text-transform:none">{{vm.lead.client.NomeCliente}}</md-button></a>
 		</div>
+		<div id="lead-summary">
+			<h3>Summary:</h3>
+			{{ vm.lead.Resumo }}
+		</div>
+
 	</div>
 </md-card>
 
-<md-card id="info" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
+<md-card id="lead-tasks" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
 	<md-toolbar>
         <h2 class="md-toolbar-tools ng-scope" translate="">Lead's Tasks</h2>
-    </md-toolbar><md-list style="overflow: auto;max-height: 400px;min-height: 10px;">
+    </md-toolbar>
+    <md-list style="overflow: auto;max-height: 300px;min-height: 10px;">
 	        <md-list-item class="md-3-line" ng-repeat="task in vm.tasks">
 	            <div class="md-list-item-text">
 	                {{ task.Resumo }}
@@ -43,14 +40,17 @@
 	</md-list>
 </md-card>
 
-<div class="margin-top-150" layout="row" layout-align="center center">
-	<h3 translate>Location</h3>
-</div>
-<div class="map-lead margin-bottom-20">
-	<div id="map_terrain_canvas">
-		<ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
-		<ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
-	</ui-gmap-google-map>
-</div>
-</div>
+<md-card id="lead-location" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
+	<md-toolbar>
+        <h2 class="md-toolbar-tools ng-scope" translate="">Client's Locations</h2>
+    </md-toolbar>
+    <div class="map-lead">
+		<div id="map_terrain_canvas">
+			<ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
+				<ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+	</div>
+</md-card>
+
 </md-content>
