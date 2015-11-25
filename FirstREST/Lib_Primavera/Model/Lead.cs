@@ -25,11 +25,19 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public string Resumo
+        {
+            get;
+            set;
+        }
+
         public string TipoEntidade
         {
             get;
             set;
         }
+
+       
 
     }
 }

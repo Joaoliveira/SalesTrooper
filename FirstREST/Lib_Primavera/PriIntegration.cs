@@ -538,7 +538,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo FROM CabecOportunidadesVenda");
 
 
                 while (!objList.NoFim())
@@ -548,7 +548,8 @@ namespace FirstREST.Lib_Primavera
                         idLead = objList.Valor("ID"),
                         DescLead = objList.Valor("Descricao"),
                         Entidade = objList.Valor("Entidade"),
-                        TipoEntidade = objList.Valor("TipoEntidade")
+                        TipoEntidade = objList.Valor("TipoEntidade"),
+                        Resumo = objList.Valor("Resumo")
                     });
                     objList.Seguinte();
 
@@ -569,7 +570,7 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
 
 
                 while (!objList.NoFim())
@@ -579,7 +580,8 @@ namespace FirstREST.Lib_Primavera
                         idLead = objList.Valor("ID"),
                         DescLead = objList.Valor("Descricao"),
                         Entidade = objList.Valor("Entidade"),
-                        TipoEntidade = objList.Valor("TipoEntidade")
+                        TipoEntidade = objList.Valor("TipoEntidade"),
+                        Resumo = objList.Valor("Resumo")
                     });
                     objList.Seguinte();
 
