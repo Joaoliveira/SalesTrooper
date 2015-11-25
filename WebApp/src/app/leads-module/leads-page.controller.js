@@ -52,7 +52,6 @@
             },
             options:{
                 scrollwheel:false,
-                mapTypeId:maps.MapTypeId.TERRAIN
             }
         };
 
