@@ -1031,6 +1031,12 @@ namespace FirstREST.Lib_Primavera
 
             CrmBEActividade objAtiv = new CrmBEActividade();
 
+            if (value != "0" && value != "1")
+            {
+                erro.Erro = 1;
+                erro.Descricao = "Estado invalido: " + value;
+                return erro;
+            }
             try
             {
 

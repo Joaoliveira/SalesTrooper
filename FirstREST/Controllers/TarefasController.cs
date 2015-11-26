@@ -64,7 +64,7 @@ namespace FirstREST.Controllers
 
         }
         
-
+        class
         // PUT api/<controller>/5
         [Route("api/tasks/{id}/")]
         [HttpPut]

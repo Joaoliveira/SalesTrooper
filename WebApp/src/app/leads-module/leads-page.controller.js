@@ -62,6 +62,10 @@
            vm.tasks = response.data;
         });
 
+        vm.changeTaskState = function(Id, Estado) {
+            var request = $http.put('http://localhost:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+        }
+
     });
         
     }
