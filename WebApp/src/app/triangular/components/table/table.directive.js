@@ -6,7 +6,7 @@
         .directive('triTable', triTable);
 
     /* @ngInject */
-    function triTable($filter) {
+    function triTable($filter, $location) {
         var directive = {
             restrict: 'E',
             scope: {
@@ -51,6 +51,11 @@
                 activeSortColumn = sortableColumns[0];
                 $scope.refresh();
             }
+
+            $scope.goto = function(field){
+                var locationPath = field.substring(1, field.length-1);
+                $location.path("/leads/" + locationPath);
+            };
 
             $scope.sortClick = function(field) {
                 if(sortableColumns.indexOf(field) !== -1) {
