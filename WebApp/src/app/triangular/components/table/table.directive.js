@@ -55,7 +55,6 @@
             $scope.goto = function(field){
                 var locationPath = field.substring(1, field.length-1);
                 if($location.path() == '/tasks/search-tasks') {
-                    alert("cenas");
                     $location.path("/tasks/" + locationPath);
                 }
                 else if($location.path() == '/leads/search-leads') {

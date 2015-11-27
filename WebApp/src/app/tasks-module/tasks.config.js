@@ -17,7 +17,7 @@
             controllerAs: 'vm'    
         })        
         .state('triangular.admin-default.tasks-page', {
-            url: '/tasks/:Id',
+            url: '/tasks/:taskID',
             templateUrl: 'app/tasks-module/tasks-page.tmpl.html',
             controller: 'TasksPageController',
             controllerAs: 'vm'
@@ -30,7 +30,7 @@
         
         triMenuProvider.addMenu({
             name: 'Tasks',
-            icon: 'zmdi zmdi-case',
+            icon: 'zmdi zmdi-calendar-check',
             type: 'dropdown',
             priority: 1.1,
             children: [{
