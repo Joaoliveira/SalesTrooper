@@ -8,6 +8,7 @@
             'ui.router', 'pascalprecht.translate', 'LocalStorageModule', 'googlechart', 'chart.js', 'linkify', 'ui.calendar', 'angularMoment', 'textAngular', 'uiGmapgoogle-maps', 'hljs', 'md.data.table', angularDragula(angular), 'ngFileUpload',
             'dashboard-module',
             'leads-module',
+            'clients-module',
             'tasks-module'
         ])
         // create a constant for languages so they can be added to both triangular & translate
