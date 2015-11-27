@@ -35,8 +35,6 @@
 
           promise.then(function requestDone (response) {
            vm.tasks.iter = response.data;
-
-
         });
 
 

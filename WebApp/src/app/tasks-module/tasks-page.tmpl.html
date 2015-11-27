@@ -24,9 +24,9 @@
 		    <md-list-item class="md-3-line" ng-repeat="item in ::vm.tasks.iter">
 		        <md-checkbox ng-model="item.selected"></md-checkbox>
 		        <div class="md-list-item-text">
-		            <p><b>Description</b>{{::item.Descricao}}</p>
-		            <h4><b>Creation Date</b>{{::item.Data | date:'MMM d, y h:mm:ss a' }}</h4>
-		            <p><b>Last Update</b>{{::item.VersaoUltAct}}</p>
+		            <h4><b>Description:  </b>{{::item.Descricao}}</h4>
+		            <p><b>Creation Date:  </b>{{::item.Data | date:'MMM d, y h:mm:ss a' }}</p>
+		            <p><b>Last Update:  </b>{{::item.VersaoUltAct}}</p>
 		        </div>
 		    </md-list-item>
 		</md-list>

@@ -31,7 +31,13 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
-        public System.DateTime Data
+        /*public System.DateTime Data
+        {
+            get;
+            set;
+        } */
+
+        public byte[] VersaoUltAct
         {
             get;
             set;

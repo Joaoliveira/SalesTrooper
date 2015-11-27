@@ -1165,7 +1165,7 @@ namespace FirstREST.Lib_Primavera
                         IdTarefa = objList.Valor("idTarefa"),
                         Descricao = objList.Valor("Descricao"),
                         Utilizador = objList.Valor("Utilizador"),
-                        Data = objList.Valor("Data")                
+                        //Data = objList.Valor("Data")                
                     });
                     objList.Seguinte();
 
@@ -1197,7 +1197,7 @@ namespace FirstREST.Lib_Primavera
                     myIterTar.IdTarefa = objList.Valor("idTarefa");
                     myIterTar.Descricao = objList.Valor("Descricao");
                     myIterTar.Utilizador = objList.Valor("Utilizador");
-                    myIterTar.Data = objList.Valor("Data");
+                   // myIterTar.Data = objList.Valor("Data");
                     
                     return myIterTar;
                 }
@@ -1229,7 +1229,8 @@ namespace FirstREST.Lib_Primavera
                         IdTarefa = objList.Valor("idTarefa"),
                         Descricao = objList.Valor("Descricao"),
                         Utilizador = objList.Valor("Utilizador"),
-                        Data = objList.Valor("Data")
+                        //Data = objList.Valor("Data"),
+                        VersaoUltAct = objList.Valor("VersaoUltAct")
                     });
                     objList.Seguinte();
                 }
@@ -1310,7 +1311,7 @@ namespace FirstREST.Lib_Primavera
                     myAct.set_IDActividadeOrigem(iterTarefa.IdTarefa);
                     myAct.set_Descricao(iterTarefa.Descricao);
                     myAct.set_Utilizador(iterTarefa.Utilizador);
-                    myAct.set_DataInicio(iterTarefa.Data);
+                    //myAct.set_DataInicio(iterTarefa.Data);
                    
 
                     PriEngine.Engine.CRM.Actividades.Actualiza(myAct);
