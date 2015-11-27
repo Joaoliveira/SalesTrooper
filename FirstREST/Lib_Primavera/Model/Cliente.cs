@@ -46,6 +46,11 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+        public string Descricao
+        {
+            get;
+            set;
+        }
 
     }
 }
