@@ -1137,8 +1137,207 @@ namespace FirstREST.Lib_Primavera
 
 
 
+
+
         #endregion Tarefas
 
+        #region IterTarefas
+
+        public static List<Model.IterTarefa> ListaIterTarefas()
+        {
+
+            StdBELista objList;
+
+            List<Model.IterTarefa> listIterTarefas = new List<Model.IterTarefa>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+
+
+                objList = PriEngine.Engine.Consulta("SELECT * FROM  TAREFASATTACH");
+
+
+                while (!objList.NoFim())
+                {
+                    listIterTarefas.Add(new Model.IterTarefa
+                    {
+                        Id = objList.Valor("Id"),
+                        IdTarefa = objList.Valor("idTarefa"),
+                        Descricao = objList.Valor("Descricao"),
+                        Utilizador = objList.Valor("Utilizador"),
+                        Data = objList.Valor("Data")                
+                    });
+                    objList.Seguinte();
+
+                }
+
+                return listIterTarefas;
+            }
+            else
+                return null;
+        }
+
+        public static Lib_Primavera.Model.IterTarefa GetIterTarefa(string id)
+        {
+
+
+            StdBELista objList = new StdBELista();
+
+
+            Model.IterTarefa myIterTar = new Model.IterTarefa();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT * FROM TAREFASATTACH WHERE Id =" + "\'" + id + "\'");
+
+
+                if (objList.NumLinhas() == 1)
+                {
+                    myIterTar.Id = objList.Valor("Id");
+                    myIterTar.IdTarefa = objList.Valor("idTarefa");
+                    myIterTar.Descricao = objList.Valor("Descricao");
+                    myIterTar.Utilizador = objList.Valor("Utilizador");
+                    myIterTar.Data = objList.Valor("Data");
+                    
+                    return myIterTar;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+                return null;
+        }
+
+        public static List<Lib_Primavera.Model.IterTarefa> GetIterTarefasTarefa(string idTarefa)
+        {
+            StdBELista objList = new StdBELista();
+
+            List<Lib_Primavera.Model.IterTarefa> results = new List<Model.IterTarefa>();
+
+            if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(),
+                FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+            {
+                objList = PriEngine.Engine.Consulta("SELECT * FROM TAREFASATTACH WHERE IdTarefa = \'" + idTarefa + "\'");
+
+                while (!objList.NoFim())
+                {
+                    results.Add(new Model.IterTarefa
+                    {
+                        Id = objList.Valor("Id"),
+                        IdTarefa = objList.Valor("idTarefa"),
+                        Descricao = objList.Valor("Descricao"),
+                        Utilizador = objList.Valor("Utilizador"),
+                        Data = objList.Valor("Data")
+                    });
+                    objList.Seguinte();
+                }
+
+                return results;
+            }
+
+            return null;
+
+        }
+
+        public static Lib_Primavera.Model.RespostaErro UpdIterTarefa(string id, string value)
+        {
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+
+
+            CrmBEActividade objAtiv = new CrmBEActividade();
+
+            try
+            {
+
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    if (PriEngine.Engine.CRM.Actividades.Existe(id) == false)
+                    {
+                        erro.Erro = 1;
+                        erro.Descricao = "A Itertarefa não existe";
+                        return erro;
+                    }
+                    else
+                    {
+
+                        objAtiv = PriEngine.Engine.CRM.Actividades.Edita(id);
+                        objAtiv.set_EmModoEdicao(true);
+
+                        objAtiv.set_Estado(value);
+
+                        PriEngine.Engine.CRM.Actividades.Actualiza(objAtiv);
+
+
+                        erro.Erro = 0;
+                        erro.Descricao = "Sucesso";
+                        return erro;
+                    }
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir a empresa";
+                    return erro;
+
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+        }
+
+        public static Lib_Primavera.Model.RespostaErro InsereIterTarefaObj(Model.IterTarefa iterTarefa)
+        {
+
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+
+
+            CrmBEActividade myAct = new CrmBEActividade();// Actividades
+
+            try
+            {
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+
+                    myAct.set_ID(iterTarefa.Id);
+                    myAct.set_IDActividadeOrigem(iterTarefa.IdTarefa);
+                    myAct.set_Descricao(iterTarefa.Descricao);
+                    myAct.set_Utilizador(iterTarefa.Utilizador);
+                    myAct.set_DataInicio(iterTarefa.Data);
+                   
+
+                    PriEngine.Engine.CRM.Actividades.Actualiza(myAct);
+
+                    erro.Erro = 0;
+                    erro.Descricao = "Sucesso";
+                    return erro;
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir empresa";
+                    return erro;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+
+
+        }
+
+        #endregion IterTarefas
 
         #region Faturas
         internal static IEnumerable<Model.Fatura> FaturasCliente(string id)

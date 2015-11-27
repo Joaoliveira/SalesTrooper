@@ -26,7 +26,20 @@
 
         promise.then(function requestDone (response) {
            vm.tasks = response.data;
+
+
         });
+
+
+        promise = $http.get('http://localhost:49822/api/itertarefas/' + $stateParams.taskID);
+
+          promise.then(function requestDone (response) {
+           vm.tasks.iter = response.data;
+
+
+        });
+
+
 
         uiGmapGoogleMapApi.then(function(maps) {
             vm.terrainMap = {

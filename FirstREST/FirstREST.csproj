@@ -286,6 +286,7 @@
     <Compile Include="Controllers\DocCompraController.cs" />
     <Compile Include="Controllers\DocVendaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IterTarefasController.cs" />
     <Compile Include="Controllers\LeadController.cs" />
     <Compile Include="Controllers\TarefasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -294,6 +295,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Lib_Primavera\Model\Fatura.cs" />
+    <Compile Include="Lib_Primavera\Model\IterTarefa.cs" />
     <Compile Include="Lib_Primavera\Model\Lead.cs" />
     <Compile Include="Lib_Primavera\Model\Tarefa.cs" />
     <Compile Include="Lib_Primavera\Model\Vendedor.cs" />

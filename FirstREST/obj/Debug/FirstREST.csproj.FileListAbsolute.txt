@@ -355,3 +355,4 @@ C:\Users\user\Documents\GitHub\SalesTrooper\FirstREST\bin\zh-Hant\System.Spatial
 C:\Users\user\Documents\GitHub\SalesTrooper\FirstREST\obj\Debug\FirstREST.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\SalesTrooper\FirstREST\obj\Debug\FirstREST.dll
 C:\Users\user\Documents\GitHub\SalesTrooper\FirstREST\obj\Debug\FirstREST.pdb
+C:\Users\user\Desktop\SalesTrooper\FirstREST\obj\Debug\FirstREST.csprojResolveAssemblyReference.cache
