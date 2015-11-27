@@ -22,7 +22,13 @@ namespace FirstREST.Lib_Primavera.Model
             }
         }
     
-*/       
+*/
+
+        public string Localidade
+        {
+            get;
+            set;
+        }
         public string CodCliente
         {
             get;

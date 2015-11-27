@@ -33,24 +33,29 @@
             for (var i = 0; i < vm.tasks.length; i++) {
                 vm.eventSources[0].events.push({
                     title: vm.tasks[i].Resumo,
-                    start: vm.tasks[i].DataDeInicio,
-                    end: vm.tasks[i].DataDeFim,
+                    start: moment(vm.tasks[i].DataDeInicio).format(),
+                    end: moment(vm.tasks[i].DataDeFim).format(),
                     allDay: false
                 });
             };
-            
         });
 
+        vm.changeTaskState = function(Id, Estado) {
+            var request = $http.put('http://localhost:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+        }
 
-
-
+        
         //CALENDAR
 
         vm.calendarOptions = {
             contentHeight: '500px',
-            selectable: true,
-            editable: true,
-            header: false,
+            selectable: false,
+            editable: false,
+            header: {
+                left: 'prev',
+                center: 'title',
+                right: 'next'
+            },
             defaultView: 'agendaDay',
             scrollTime: '08:00:00',
             slotDuration: '01:00:00',

@@ -1,15 +1,11 @@
 <md-content class="padded-content-page">
-
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3" translate>DASHBOARD</h2>
-    </div>
     <div layout="row">
         <md-card flex>
             <md-card-content>
                 <md-list>
                     <md-subheader class="md-no-sticky">Tasks</md-subheader>
                     <md-list-item class="md-3-line" ng-repeat="task in vm.tasks">
-                        <md-checkbox ng-model="item.selected"></md-checkbox>
+                        <md-checkbox  ng-model="task.Estado" ng-true-value="1" ng-false-value="0" aria-label="Done" ng-change="vm.changeTaskState(task.Id, task.Estado)"></md-checkbox>
                         <div class="md-list-item-text">
                             <h3>{{ task.Resumo }}</h3>
                             <h4>{{ task.Descricao }}</h4>
