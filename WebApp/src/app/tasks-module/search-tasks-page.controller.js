@@ -21,7 +21,7 @@
                     name: vm.tasks[i].Resumo,
                     priority: vm.tasks[i].Prioridade,
                     endDate: vm.tasks[i].DataDeFim,
-                    entity: vm.tasks[i].Entidade
+                    entity: vm.tasks[i].EntidadePrincipal
                 };
                 vm.contents.push(obj);
             }
