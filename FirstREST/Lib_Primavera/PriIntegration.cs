@@ -78,6 +78,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.Moeda = objCli.Valor("Moeda");
                     myCli.NumContribuinte = objCli.Valor("NumContrib");
                     myCli.Morada = objCli.Valor("Fac_Mor");
+                    myCli.Descricao = objCli.Valor("Descricao");
                     return myCli;
                 }
                 else
@@ -119,6 +120,7 @@ namespace FirstREST.Lib_Primavera
                         objCli.set_NumContribuinte(cliente.NumContribuinte);
                         objCli.set_Moeda(cliente.Moeda);
                         objCli.set_Morada(cliente.Morada);
+                        objCli.set_Descricao(cliente.Descricao);
 
                         PriEngine.Engine.Comercial.Clientes.Actualiza(objCli);
 
@@ -242,6 +244,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.set_NumContribuinte(cli.NumContribuinte);
                     myCli.set_Moeda(cli.Moeda);
                     myCli.set_Morada(cli.Morada);
+                    myCli.set_Descricao(cli.Descricao);
 
                     PriEngine.Engine.Comercial.Clientes.Actualiza(myCli);
 
