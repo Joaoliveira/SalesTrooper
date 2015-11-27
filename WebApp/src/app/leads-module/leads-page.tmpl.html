@@ -35,6 +35,7 @@
 	            <div class="md-list-item-text">
 	                {{ task.Resumo }}
 	            </div>
+	            <md-checkbox class="md-secondary" ng-model="task.Estado" ng-true-value="1" ng-false-value="0" aria-label="Done" ng-change="vm.changeTaskState(task.Id, task.Estado)"></md-checkbox>
 	        	<md-divider ng-if="!$last"></md-divider>	
 	        </md-list-item>
 	</md-list>

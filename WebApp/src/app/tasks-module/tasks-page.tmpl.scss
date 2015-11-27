@@ -1,0 +1,33 @@
+.seed-list {
+  list-style: lower-greek;
+}
+
+.map-task .angular-google-map-container {
+	height: 550px;
+}
+
+ #map_canvas {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    .angular-google-map-container {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+    }
+}
+
+.bar-steps {
+    margin-top: 30px;
+    padding-right: 16.7%;
+    display: inline;
+}
+
+
+
+#tasks {
+    margin-left: 5%;
+    width: 30%;
+}

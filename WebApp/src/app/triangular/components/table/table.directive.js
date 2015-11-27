@@ -54,7 +54,16 @@
 
             $scope.goto = function(field){
                 var locationPath = field.substring(1, field.length-1);
-                $location.path("/leads/" + locationPath);
+                if($location.path() == '/tasks/search-tasks') {
+                    $location.path("/tasks/" + locationPath);
+                }
+                else if($location.path() == '/leads/search-leads') {
+                    $location.path("/leads/" + locationPath);
+                }
+                else {
+                    alert("lel");
+                }
+                
             };
 
             $scope.sortClick = function(field) {
