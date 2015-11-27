@@ -10,7 +10,6 @@
         
         var vm = this;
         vm.tasks = [];
-        var address;
         var promise = $http.get('http://localhost:49822/api/leads/' + $stateParams.leadID);
 
         promise.then(function requestDone (response) {
@@ -19,9 +18,11 @@
 
             promise.then(function requestDone (response) {
                 vm.lead.client = response.data;
-                address = vm.lead.client.Localidade;
+
+                var address = vm.lead.client.Localidade;
+
                 if(!address) {
-                    address = vm.client.Morada;
+                    address = vm.lead.client.Morada;
                 }
                 promise = $http.get('http://maps.googleapis.com/maps/api/geocode/json?address="' + address + '"&sensor=false');
 
