@@ -20,7 +20,9 @@
             promise.then(function requestDone (response) {
                 vm.lead.client = response.data;
                 address = vm.lead.client.Localidade;
-
+                if(!address) {
+                    address = vm.client.Morada;
+                }
                 promise = $http.get('http://maps.googleapis.com/maps/api/geocode/json?address="' + address + '"&sensor=false');
 
                 promise.then(function requestDone (response) {

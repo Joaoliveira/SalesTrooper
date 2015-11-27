@@ -17,7 +17,7 @@
             controllerAs: 'vm'    
         })
         .state('triangular.admin-default.clients-page', {
-            url: '/clients/:clientsID',
+            url: '/clients/:clientID',
             templateUrl: 'app/clients-module/clients-page.tmpl.html',
             controller: 'ClientsPageController',
             controllerAs: 'vm'
