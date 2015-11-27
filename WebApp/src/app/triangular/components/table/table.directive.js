@@ -60,6 +60,10 @@
                 else if($location.path() == '/leads/search-leads') {
                     $location.path("/leads/" + locationPath);
                 }
+                else if($location.path() == '/clients/search-clients'){
+                	$location.path("/clients/" + locationPath);
+                }
+
                 else {
                     alert("lel");
                 }

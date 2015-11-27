@@ -9,11 +9,11 @@
     function ClientsPageController(uiGmapGoogleMapApi, $http, $stateParams) {
           var vm = this;
         vm.leads = [];
-        var promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientsID);
+        var promise = $http.get('http://localhost:49822/api/clients/' + 'sofrio');
 
         promise.then(function requestDone (response) {
             vm.client = response.data;
-            promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientsID + '/leads');
+            promise = $http.get('http://localhost:49822/api/clients/' + 'sofrio' + '/leads');
 
             promise.then(function requestDone (response) {
                 vm.leads = response.data;
