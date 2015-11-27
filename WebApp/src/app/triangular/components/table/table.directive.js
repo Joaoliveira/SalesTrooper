@@ -53,15 +53,17 @@
             }
 
             $scope.goto = function(field){
-                var locationPath = field.substring(1, field.length-1);
+                var locationPath;
                 if($location.path() == '/tasks/search-tasks') {
+                    locationPath = field.substring(1, field.length-1);
                     $location.path("/tasks/" + locationPath);
                 }
                 else if($location.path() == '/leads/search-leads') {
+                    locationPath = field.substring(1, field.length-1);
                     $location.path("/leads/" + locationPath);
                 }
                 else if($location.path() == '/clients/search-clients'){
-                	$location.path("/clients/" + locationPath);
+                	$location.path("/clients/" + field);
                 }
 
                 else {
