@@ -12,7 +12,6 @@
         var vm = this;
         vm.tasks = [];
 
-
         vm.eventSources = [{
             events: []
         }];
@@ -26,20 +25,7 @@
             }
         };
 
-        $http.get('http://localhost:49822/api/salesmen/1/tasks/', config).then(function(response){
-            vm.tasks = response.data;
-
-
-            for (var i = 0; i < vm.tasks.length; i++) {
-                vm.eventSources[0].events.push({
-                    title: vm.tasks[i].Resumo,
-                    start: moment(vm.tasks[i].DataDeInicio).format(),
-                    end: moment(vm.tasks[i].DataDeFim).format(),
-                    allDay: false
-                });
-            };
-        });
-
+        
         vm.changeTaskState = function(Id, Estado) {
             var request = $http.put('http://localhost:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
         }
@@ -115,5 +101,23 @@
             'agendaWeek': 'w',
             'agendaDay': 'Do MMMM YYYY'
         };
+
+        $http.get('http://localhost:49822/api/salesmen/1/tasks/', config).then(function(response){
+            vm.tasks = response.data;
+            var source = {
+                events: []
+            }
+            for (var i = 0; i < vm.tasks.length; i++) {
+                source.events.push({
+                    title: vm.tasks[i].Resumo,
+                    start: vm.tasks[i].DataDeInicio,
+                    end: vm.tasks[i].DataDeFim,
+                    allDay: false
+                });
+            };
+
+            uiCalendarConfig.calendars['triangular-calendar'].fullCalendar('addEventSource', source);
+        });
+
     }
 })();
