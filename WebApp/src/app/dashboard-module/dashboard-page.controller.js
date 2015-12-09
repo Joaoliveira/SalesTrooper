@@ -20,7 +20,7 @@
             'Accept': 'application/json',
             params: {
                 dataInicio: '1970-01-01',
-                dataFim: '2015-11-30'
+                dataFim: '2015-12-31'
 
             }
         };
