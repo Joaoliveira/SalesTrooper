@@ -31,5 +31,28 @@ namespace FirstREST.Controllers
         {
             return Lib_Primavera.PriIntegration.GetTarefasLead(id);
         }
+
+        [Route("api/leads")]
+        [HttpPost]
+        public HttpResponseMessage Post(Lib_Primavera.Model.Lead lead)
+        {
+            Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
+            erro = Lib_Primavera.PriIntegration.InsereLeadObj(lead);
+
+            if (erro.Erro == 0)
+            {
+                var response = Request.CreateResponse(
+                   HttpStatusCode.Created, lead);
+                /*string uri = Url.Link("DefaultApi", new { CodCliente = cliente.CodCliente });
+                response.Headers.Location = new Uri(uri);*/
+                return response;
+            }
+
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
+            }
+
+        }
     }
 }

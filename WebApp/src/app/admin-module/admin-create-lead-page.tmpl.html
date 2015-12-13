@@ -1,0 +1,31 @@
+<md-content class="padded-content-page" id="content">
+    <h2>Create lead</h2>
+    <md-input-container>
+        <label>Identifier</label>
+        <input ng-model="vm.lead.Oportunidade" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Description</label>
+        <input ng-model="vm.lead.DescLead" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Summary</label>
+        <input ng-model="vm.lead.Resumo" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Client</label>
+        <md-select ng-model="vm.lead.Entidade" placeholder="Select a client">
+            <md-option ng-value="client.CodCliente" ng-repeat="client in vm.clients">{{ client.NomeCliente }}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>Salesman</label>
+        <md-select ng-model="vm.lead.Vendedor" placeholder="Select a salesman">
+            <md-option ng-value="salesman.CodVendedor" ng-repeat="salesman in vm.salesmen">{{ salesman.NomeVendedor }}</md-option>
+        </md-select>
+    </md-input-container>
+    <div layout="row" layout-align="end center">
+        <md-button class="md-primary" ng-click="vm.createLead()">Create</md-button>
+        <md-button>Cancel</md-button>
+    </div>
+</md-content>

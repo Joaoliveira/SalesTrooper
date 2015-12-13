@@ -601,6 +601,55 @@ namespace FirstREST.Lib_Primavera
 
         }
 
+
+        public static Lib_Primavera.Model.RespostaErro InsereLeadObj(Model.Lead lead)
+        {
+
+            Lib_Primavera.Model.RespostaErro erro = new Model.RespostaErro();
+
+
+            CrmBEOportunidadeVenda myLead = new CrmBEOportunidadeVenda();
+
+            try
+            {
+                if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
+                {
+                    myLead.set_ID(Guid.NewGuid().ToString());
+                    myLead.set_Oportunidade(lead.Oportunidade);
+                    myLead.set_Descricao(lead.DescLead);
+                    myLead.set_Entidade(lead.Entidade);
+                    myLead.set_Resumo(lead.Resumo);
+                    myLead.set_TipoEntidade(lead.TipoEntidade);
+                    myLead.set_Vendedor(lead.Vendedor);
+                    myLead.set_CicloVenda("CV_HW");
+                    myLead.set_DataCriacao(DateTime.Now);
+                    myLead.set_DataExpiracao(new DateTime(2100, 12, 12));
+                    myLead.set_Moeda("EUR");
+
+                    PriEngine.Engine.CRM.OportunidadesVenda.Actualiza(myLead);
+
+
+                    erro.Erro = 0;
+                    erro.Descricao = "Sucesso";
+                    return erro;
+                }
+                else
+                {
+                    erro.Erro = 1;
+                    erro.Descricao = "Erro ao abrir empresa";
+                    return erro;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                erro.Erro = 1;
+                erro.Descricao = ex.Message;
+                return erro;
+            }
+
+
+        }
         #endregion Lead
 
         #region DocCompra

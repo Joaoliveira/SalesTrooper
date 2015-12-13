@@ -37,7 +37,17 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
-       
+        public string Vendedor
+        {
+            get;
+            set;
+        }
+
+        public string Oportunidade
+        {
+            get;
+            set;
+        }
 
     }
 }
