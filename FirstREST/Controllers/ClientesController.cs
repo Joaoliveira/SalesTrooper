@@ -15,7 +15,7 @@ namespace FirstREST.Controllers
         [HttpGet]
         public IEnumerable<Lib_Primavera.Model.Cliente> Get()
         {
-                return Lib_Primavera.PriIntegration.ListaClientes();
+            return Lib_Primavera.PriIntegration.ListaClientes();
         }
 
 
@@ -47,14 +47,14 @@ namespace FirstREST.Controllers
             {
                 var response = Request.CreateResponse(
                    HttpStatusCode.Created, cliente);
-                string uri = Url.Link("DefaultApi", new { CodCliente = cliente.CodCliente });
-                response.Headers.Location = new Uri(uri);
+                /*string uri = Url.Link("DefaultApi", new { CodCliente = cliente.CodCliente });
+                response.Headers.Location = new Uri(uri);*/
                 return response;
             }
 
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
             }
 
         }

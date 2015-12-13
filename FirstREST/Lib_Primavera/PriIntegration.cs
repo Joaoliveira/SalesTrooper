@@ -245,6 +245,7 @@ namespace FirstREST.Lib_Primavera
                     myCli.set_Moeda(cli.Moeda);
                     myCli.set_Morada(cli.Morada);
                     myCli.set_Descricao(cli.Descricao);
+                    myCli.set_Vendedor(cli.Vendedor);
 
                     PriEngine.Engine.Comercial.Clientes.Actualiza(myCli);
 

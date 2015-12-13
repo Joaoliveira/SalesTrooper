@@ -1,0 +1,40 @@
+<md-content class="padded-content-page" id="content">
+    <h2>Create client</h2>
+    <md-input-container>
+        <label>ID</label>
+        <input ng-model="vm.client.CodCliente" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Name</label>
+        <input ng-model="vm.client.NomeCliente" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Description</label>
+        <input ng-model="vm.client.Descricao" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Address</label>
+        <input ng-model="vm.client.Morada" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Place</label>
+        <input ng-model="vm.client.Localidade" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Phone Number</label>
+        <input ng-model="vm.client.Telefone" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>TIN</label>
+        <input ng-model="vm.client.NumContribuinte" type="text">
+    </md-input-container>
+    <md-input-container>
+        <md-select ng-model="vm.client.Vendedor" placeholder="Select a salesman">
+            <md-option ng-value="salesman.CodVendedor" ng-repeat="salesman in vm.salesmen">{{ salesman.NomeVendedor }}</md-option>
+        </md-select>
+    </md-input-container>
+    <div layout="row" layout-align="end center">
+        <md-button class="md-primary" ng-click="vm.createClient()">Create</md-button>
+        <md-button>Cancel</md-button>
+    </div>
+</md-content>
