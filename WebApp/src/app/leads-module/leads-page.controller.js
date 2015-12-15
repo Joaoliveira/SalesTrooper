@@ -7,14 +7,14 @@
 
     /* @ngInject */
     function LeadPageController(uiGmapGoogleMapApi,$http, $stateParams) {
-        
+
         var vm = this;
         vm.tasks = [];
-        var promise = $http.get('http://localhost:49822/api/leads/' + $stateParams.leadID);
+        var promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID);
 
         promise.then(function requestDone (response) {
             vm.lead = response.data;
-            promise = $http.get('http://localhost:49822/api/clients/' + vm.lead.Entidade);
+            promise = $http.get('http://127.0.0.1:49822/api/clients/' + vm.lead.Entidade);
 
             promise.then(function requestDone (response) {
                 vm.lead.client = response.data;
@@ -31,14 +31,14 @@
                     uiGmapGoogleMapApi.then(function(maps) {
                     vm.terrainMap = {
                         center: {
-                          latitude: rsp.results[0].geometry.location.lat, 
+                          latitude: rsp.results[0].geometry.location.lat,
                           longitude: rsp.results[0].geometry.location.lng
                       },
                       zoom: 15,
                       marker: {
                         id:0,
                         coords: {
-                            latitude: rsp.results[0].geometry.location.lat, 
+                            latitude: rsp.results[0].geometry.location.lat,
                             longitude: rsp.results[0].geometry.location.lng
                         },
                         options: {
@@ -59,17 +59,17 @@
         });
 
 
-        promise = $http.get('http://localhost:49822/api/leads/' + $stateParams.leadID + '/tasks');
+        promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID + '/tasks');
 
         promise.then(function requestDone (response) {
            vm.tasks = response.data;
         });
 
         vm.changeTaskState = function(Id, Estado) {
-            var request = $http.put('http://localhost:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+            var request = $http.put('http://127.0.0.1:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
         }
 
     });
-        
+
     }
 })();
