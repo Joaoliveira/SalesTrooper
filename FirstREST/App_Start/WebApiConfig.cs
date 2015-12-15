@@ -13,7 +13,7 @@ namespace FirstREST
         {
             
             //enabling cors
-            var corsAttr = new EnableCorsAttribute("http://localhost:3000", "*", "*");
+            var corsAttr = new EnableCorsAttribute("http://127.0.0.1:3000", "*", "*");
             config.EnableCors(corsAttr);
 
             //Attr routing
