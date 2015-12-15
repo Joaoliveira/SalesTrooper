@@ -10,7 +10,7 @@
 
         var vm = this;
         vm.tasks = [];
-        var promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID);
+        var promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID); //ye
 
         promise.then(function requestDone (response) {
             vm.lead = response.data;
