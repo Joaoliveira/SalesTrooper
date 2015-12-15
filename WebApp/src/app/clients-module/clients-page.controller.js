@@ -9,7 +9,7 @@
     function ClientsPageController(uiGmapGoogleMapApi, $http, $stateParams) {
         var vm = this;
         vm.leads = [];
-        var promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientID);
+        var promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID);
 
         promise.then(function requestDone (response) {
             vm.client = response.data;
@@ -25,14 +25,14 @@
                 uiGmapGoogleMapApi.then(function(maps) {
                 vm.terrainMap = {
                     center: {
-                      latitude: rsp.results[0].geometry.location.lat, 
+                      latitude: rsp.results[0].geometry.location.lat,
                       longitude: rsp.results[0].geometry.location.lng
                   },
                   zoom: 15,
                   marker: {
                     id:0,
                     coords: {
-                        latitude: rsp.results[0].geometry.location.lat, 
+                        latitude: rsp.results[0].geometry.location.lat,
                         longitude: rsp.results[0].geometry.location.lng
                     },
                     options: {
@@ -49,16 +49,17 @@
             };
             });
 
-            promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientID + '/leads');
+            promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID + '/leads');
 
             promise.then(function requestDone (response) {
                 vm.leads = response.data;
             });
 
+
         });
 
         /*
-        promise = $http.get('http://localhost:49822/api/clients/' + 'sofrio');
+        promise = $http.get('http://127.0.0.1:49822/api/clients/' + 'sofrio');
 
         promise.then(function requestDone (response) {
            vm.client.invoices = response.data;
@@ -66,7 +67,7 @@
 
     });
 
-        
+
     }
 })
 ();

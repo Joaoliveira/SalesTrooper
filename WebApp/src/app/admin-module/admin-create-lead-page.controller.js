@@ -22,14 +22,14 @@
 
         initLead();
 
-        var clientsRequest = $http.get('http://localhost:49822/api/clients/');
+        var clientsRequest = $http.get('http://127.0.0.1:49822/api/clients/');
 
         clientsRequest.then(function(response){
         	console.log(response.data);
         	vm.clients = response.data;
         });
 
-        var salesmenRequest = $http.get('http://localhost:49822/api/salesmen/');
+        var salesmenRequest = $http.get('http://127.0.0.1:49822/api/salesmen/');
 
         salesmenRequest.then(function(response){
             console.log(response.data);
@@ -38,8 +38,8 @@
 
 
         vm.createLead = function() {
-        	var request = $http.post('http://localhost:49822/api/leads/', vm.lead);
-        	
+        	var request = $http.post('http://127.0.0.1:49822/api/leads/', vm.lead);
+
         	request.then(
         		function(response){ //success
 		    		initLead();

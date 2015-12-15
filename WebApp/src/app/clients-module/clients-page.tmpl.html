@@ -25,11 +25,11 @@
         <h2 class="md-toolbar-tools ng-scope" translate="">Client's Leads</h2>
     </md-toolbar>
     <md-list style="overflow: auto;max-height: 300px;min-height: 10px;">
-            <md-list-item class="md-3-line" ng-repeat="leads in vm.leads">
+            <md-list-item class="md-3-line" ng-repeat="lead in vm.leads">
                 <div class="md-list-item-text">
-                    {{ vm.leads}}
+                    <a ng-href="#/leads/{{lead.idLead}}"><h4><md-button ng-class="[vm.buttonClass, vm.buttonHue]" aria-label="flat button"    style="text-transform:none">{{lead.DescLead}}</md-button></a>
                 </div>
-                <md-divider ng-if="!$last"></md-divider>    
+                <md-divider ng-if="!$last"></md-divider>
             </md-list-item>
     </md-list>
 </md-card>
