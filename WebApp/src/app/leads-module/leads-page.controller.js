@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function LeadPageController(uiGmapGoogleMapApi,$http, $stateParams) {
-        /*teste*/
+        
         var vm = this;
         vm.tasks = [];
         var promise = $http.get('http://127.0.0.1:49822/api/leads/' + $stateParams.leadID); //ye
