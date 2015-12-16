@@ -89,7 +89,6 @@
                     vm.labels.push(i+1);
                 }
                 vm.salesData.averageEarnings = vm.salesData.totalEarnings / vm.salesData.totalSales;
-                console.log(vm.salesData);
 
 
                 $("#totalSales").html(vm.salesData.totalSales);
