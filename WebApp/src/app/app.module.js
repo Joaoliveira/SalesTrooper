@@ -10,7 +10,8 @@
             'leads-module',
             'clients-module',
             'tasks-module',
-            'admin-module'
+            'admin-module',
+            'salesman-module'
         ])
         // create a constant for languages so they can be added to both triangular & translate
         .constant('APP_LANGUAGES', [{
