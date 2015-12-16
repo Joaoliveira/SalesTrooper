@@ -1424,8 +1424,7 @@ namespace FirstREST.Lib_Primavera
                     objList.Seguinte();
 
                 }
-
-                return listFaturas;
+                return listFaturas.OrderBy(o=>o.Data).ToList();;
             }
             else
                 return null;
