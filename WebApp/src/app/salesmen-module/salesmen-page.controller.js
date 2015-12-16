@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-        .module('salesman-module')
-        .controller('SalesmanPageController', SalesmanPageController);
+        .module('salesmen-module')
+        .controller('SalesmenPageController', SalesmenPageController);
 
     /* @ngInject */
-    function SalesmanPageController() {
+    function SalesmenPageController() {
         var vm = this;
         vm.testData = ['triangular', 'is', 'great'];
     }

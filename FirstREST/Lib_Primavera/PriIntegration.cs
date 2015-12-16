@@ -292,7 +292,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT Vendedor, Nome FROM  VENDEDORES");
+                objList = PriEngine.Engine.Consulta("SELECT Vendedor, Nome, Morada, Telefone, EMail, Notas FROM  VENDEDORES");
 
 
                 while (!objList.NoFim())
@@ -300,7 +300,11 @@ namespace FirstREST.Lib_Primavera
                     listVendedores.Add(new Model.Vendedor
                     {
                         CodVendedor = objList.Valor("Vendedor"),
-                        NomeVendedor = objList.Valor("Nome")
+                        NomeVendedor = objList.Valor("Nome"),
+                        MoradaVendedor = objList.Valor("Morada"),
+                        TelefoneVendedor = objList.Valor("Telefone"),
+                        EmailVendedor = objList.Valor("EMail"),
+                        NotasVendedor = objList.Valor("Notas")
                     });
                     objList.Seguinte();
 
@@ -327,6 +331,10 @@ namespace FirstREST.Lib_Primavera
                     objVen = PriEngine.Engine.Consulta("SELECT * FROM Vendedores WHERE Vendedor = " + "\'" + id + "\'");
                     myVend.CodVendedor = objVen.Valor("Vendedor");
                     myVend.NomeVendedor = objVen.Valor("Nome");
+                    myVend.MoradaVendedor = objVen.Valor("Morada");
+                    myVend.TelefoneVendedor = objVen.Valor("Telefone");
+                    myVend.EmailVendedor = objVen.Valor("EMail");
+                    myVend.NotasVendedor = objVen.Valor("Notas");
 
                     return myVend;
                 }

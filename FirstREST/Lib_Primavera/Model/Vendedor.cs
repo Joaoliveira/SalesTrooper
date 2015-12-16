@@ -18,5 +18,31 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+
+        public string MoradaVendedor
+        {
+            get;
+            set;
+        }
+
+        public string TelefoneVendedor
+        {
+            get;
+            set;
+        }
+
+        public string EmailVendedor
+        {
+            get;
+            set;
+        }
+
+        public string NotasVendedor
+        {
+            get;
+            set;
+        }
+
+        
     }
 }

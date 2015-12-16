@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('salesman-module', [
+        .module('salesmen-module', [
         ]);
 })();
