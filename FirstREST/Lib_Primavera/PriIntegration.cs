@@ -1400,7 +1400,7 @@ namespace FirstREST.Lib_Primavera
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
                 objList = PriEngine.Engine.Consulta(
-                    "SELECT Id, Data, NumDoc, TotalMerc, TotalIva, TotalOutros, Moeda, DataVencimento FROM CabecDoc WHERE " +
+                    "SELECT Id, Data, NumDoc, TotalMerc, TotalIva, TotalIEC, TotalDesc, TotalOutros, Moeda, DataVencimento FROM CabecDoc WHERE " +
                     "TipoEntidade = \'C\' AND " +
                     "TipoDoc = \'FA\' AND " +
                     "Entidade =\'" + id + "\'");
@@ -1415,6 +1415,8 @@ namespace FirstREST.Lib_Primavera
                         NumDoc = objList.Valor("NumDoc"),
                         TotalMerc = objList.Valor("TotalMerc"),
                         TotalIva = objList.Valor("TotalIva"),
+                        TotalIEC = objList.Valor("TotalIEC"),
+                        TotalDesc = objList.Valor("TotalDesc"),
                         TotalOutros = objList.Valor("TotalOutros"),
                         Moeda = objList.Valor("Moeda"),
                         DataVencimento = objList.Valor("DataVencimento")

@@ -43,6 +43,12 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public double TotalDesc
+        {
+            get;
+            set;
+        }
+
         public double TotalOutros
         {
             get;
