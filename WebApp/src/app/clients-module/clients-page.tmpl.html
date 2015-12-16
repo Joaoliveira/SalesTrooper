@@ -40,9 +40,31 @@
     </md-toolbar>
     <md-content class="padded-content-page">
     <div ng-controller="ClientsPageController as vm">
-        <tri-table class="elements-image-table-example" columns="::vm.columns" contents="::vm.contents" page-size="5"></tri-table>
+        <tri-table class="elements-image-table-example" columns="::vm.columns" contents="::vm.contents" page-size="5"> </tri-table>
     </div>
     </md-content>
+</md-card>
+
+<md-card id="client-kpi" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
+    <md-toolbar>
+       <h2 class="md-toolbar-tools ng-scope" translate="">Client's KPI</h2>
+    </md-toolbar>
+    <md-content class="padded-content-page">
+    <canvas id= "kpi"class="chart-line" chart-data="vm.data" chart-labels="vm.labels" chart-legend="true" chart-series="vm.series" chart-options="options"></canvas>
+    <div layout="row" layout-sm="column" layout-margin dragula='"drag-analytics-container"'>
+        <tri-widget palette-background="triCyan:600" content-layout="column" content-layout-align="space-between center" content-padding>
+            <p id="totalSales" class="md-display-2 font-weight-100 margin-top-10 margin-bottom-0" countupto="vm.salesData.totalSales" duration="1.5" decimals="0"></p>
+            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-10" translate>Total Sales</p>
+        </tri-widget>
+        <tri-widget palette-background="triCyan:600" content-layout="column" content-layout-align="space-between center" content-padding>
+            <p id="averageEarnings" class="md-display-2 font-weight-100 margin-top-10 margin-bottom-0" countupto="vm.salesData.averageEarnings" duration="1.5" options="{ prefix: '$' }" decimals="2"></p>
+            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-10" translate>Average earnings</p>
+        </tri-widget>
+        <tri-widget palette-background="triCyan:600" content-layout="column" content-layout-align="space-between center" content-padding>
+            <p id="TotalEarnings" class="md-display-2 font-weight-100 margin-top-10 margin-bottom-0" countupto="vm.salesData.totalEarnings" duration="1.5" options="{ prefix: '$' }" decimals="2"></p>
+            <p class="md-body-2 opacity-60 margin-top-0 margin-bottom-10" translate>Total earnings</p>
+        </tri-widget>
+    </div>
 </md-card>
 
 <md-card id="client-location" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
