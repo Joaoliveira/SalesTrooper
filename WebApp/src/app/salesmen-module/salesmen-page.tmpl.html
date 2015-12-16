@@ -1,12 +1,63 @@
 <md-content class="padded-content-page">
     <div layout="row" layout-align="center center">
-        <h2 class="md-display-3" translate>SEED.TITLE</h2>
+        <h2 class="md-display-3" translate></h2>
     </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
+
+    <div class="margin-20" layout="row" layout-align="center top">
+        <md-card flex="80">
+            <img src="assets/images/avatars/avatar-1.png" alt="Card Image">
+            <md-card-content>
+                <md-card id="client-location" style="width: 100%">
+                    <div class="map-client">
+                        <div id="map_terrain_canvas">
+                            <ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
+                                <ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
+                            </ui-gmap-google-map>
+                        </div>
+                    </div>
+                </md-card>
+                
+            </md-card-content>
+        </md-card>
+
+
+        <md-card id="info" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
+            <md-toolbar>
+                <h2 class="md-toolbar-tools ng-scope" translate="">{{vm.salesman.NomeVendedor}}</h2>
+            </md-toolbar>
+            <div id="info-content" class="margin-10">
+                <div class="salesman margin-top-20">
+                    
+                    <!-- img src="http://philosophy.ucr.edu/wp-content/uploads/2014/10/no-profile-img.gif" align="left" class="img-circle margin-right-50" -->
+                    
+                </div>
+
+                <b>Contact</b>
+                    <p>{{vm.salesman.TelefoneVendedor}}</p>
+                <b>Email</b>
+                <p>{{vm.salesman.EmailVendedor}}</p>
+
+                <b>Address</b>
+                <p>{{vm.salesman.LocalidadeVendedor}}</p>
+
+                <p>{{vm.salesman.MoradaVendedor}}</p>
+              
+
+            </div>
+        </md-card>
+
+        <md-card id="clients" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
+            <md-toolbar>
+                <h2 class="md-toolbar-tools ng-scope" translate="">Salesman's Clients</h2>
+            </md-toolbar>
+            <md-list style="overflow: auto;max-height: 300px;min-height: 10px;">
+                <md-list-item class="md-5-line" ng-repeat="client in vm.clients">
+                    <div class="md-list-item-text">
+                        <md-button class="md-primary">{{client.NomeCliente}}</md-button>
+                    </div>
+                    <md-divider ng-if="!$last"></md-divider>    
+                </md-list-item>
+            </md-list>
+        </md-card>
     </div>
 </md-content>

@@ -43,6 +43,12 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public string LocalidadeVendedor
+        {
+            get;
+            set;
+        }
+
         
     }
 }
