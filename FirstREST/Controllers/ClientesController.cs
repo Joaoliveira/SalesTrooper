@@ -152,7 +152,7 @@ namespace FirstREST.Controllers
             }
             catch (Exception ex)
             {
-                return Request.CreateResponse(HttpStatusCode.Gone);
+                return Request.CreateResponse("No invoice available");
             }
             
         }
