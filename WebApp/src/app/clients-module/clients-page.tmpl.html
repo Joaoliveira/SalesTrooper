@@ -36,17 +36,13 @@
 
 <md-card id="client-invoices" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
     <md-toolbar>
-        <h2 class="md-toolbar-tools ng-scope" translate="">Client's Invoices</h2>
+        <h2 class="md-toolbar-tools ng-scope" translate="">Client's invoices</h2>
     </md-toolbar>
-    <md-list style="overflow: auto;max-height: 300px;min-height: 10px;">
-            <md-list-item class="md-3-line" ng-repeat="invoice in vm.invoices">
-                <div class="md-list-item-text">
-                    <h4><md-button ng-class="[vm.buttonClass, vm.buttonHue]" aria-label="flat button"    style="text-transform:none">{{invoice.Id}}</md-button>
-                    <a><h4><md-button ng-class="[vm.buttonClass, vm.buttonHue]" aria-label="flat button"    style="text-transform:none">Print invoice</md-button></a>
-                </div>
-                <md-divider ng-if="!$last"></md-divider>
-            </md-list-item>
-    </md-list>
+    <md-content class="padded-content-page">
+    <div ng-controller="ClientsPageController as vm">
+        <tri-table class="elements-image-table-example" columns="::vm.columns" contents="::vm.contents" page-size="5"></tri-table>
+    </div>
+    </md-content>
 </md-card>
 
 <md-card id="client-location" class="md-whiteframe-z1  margin-top-20" style="width: 95%">

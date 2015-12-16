@@ -58,19 +58,45 @@
             promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID + '/invoices');
 
             promise.then(function requestDone (response) {
-                vm.invoices = response.data;
-                console.log(response.data);
+                vm.contents = [];
+                vm.invoices= response.data;
+                for(var i = 0; i < vm.invoices.length; i++) {
+                    var obj = {
+                        id: vm.invoices[i].Id,
+                        goto: vm.invoices[i].NumDoc,
+                        moeada: vm.invoices[i].Moeda,
+                        numDoc: vm.invoices[i].NumDoc,
+                        data: vm.invoices[i].Data,
+                        dataVencimento: vm.invoices[i].DataVencimento,
+                        total: vm.invoices[i].TotalIva + vm.invoices[i].TotalMerc
+
+                    };
+                    vm.contents.push(obj);
+                }
             });
-
-
+            vm.columns = [{
+                title: 'ID',
+                field: 'id',
+                sortable: true
+            },{
+                title: 'Num Document',
+                field: 'numDoc',
+                sortable: true
+            },{
+                title: 'Date',
+                field: 'data',
+                sortable: true
+            },{
+                title: 'Due date',
+                field: 'dataVencimento',
+                sortable: true
+            },{
+                title: 'Total',
+                field: 'total',
+                sortable: true
+            }]
         });
 
-        /*
-        promise = $http.get('http://127.0.0.1:49822/api/clients/' + 'sofrio');
-
-        promise.then(function requestDone (response) {
-           vm.client.invoices = response.data;
-        });*/
 
     });
 
