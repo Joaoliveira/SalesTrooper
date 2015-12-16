@@ -6,7 +6,7 @@
         .directive('triTable', triTable);
 
     /* @ngInject */
-    function triTable($filter, $location) {
+    function triTable($filter, $location, $http) {
         var directive = {
             restrict: 'E',
             scope: {
@@ -65,12 +65,26 @@
                 else if($location.path() == '/clients/search-clients'){
                 	$location.path("/clients/" + field);
                 }
+                else if(field != null){
+                    var promise = $http.get('http://127.0.0.1:49822/api' + $location.path() + "/invoices/" + field);
 
-                else {
-                    alert("lel");
+                    promise.then(function requestDone (response) {
+                        if(response.data != "No invoice available")
+                            window.open('http://127.0.0.1:49822/api' + $location.path() + "/invoices/" + field);
+                        else
+                            alert(response.data);
+                    });
+
                 }
-                
+                else {
+                    console.log("lel");
+                }
+
             };
+
+            $scope.get = function(field){
+                $location.path($location.path() + "/invoices/" + field);
+            }
 
             $scope.sortClick = function(field) {
                 if(sortableColumns.indexOf(field) !== -1) {

@@ -7,7 +7,7 @@
 
     /* @ngInject */
     function DashboardPageController($http, $scope, $rootScope, $mdDialog, $mdToast, $filter, $element, triTheming, triLayout, uiCalendarConfig) {
-        
+
 
         var vm = this;
         vm.tasks = [];
@@ -25,12 +25,12 @@
             }
         };
 
-        
+
         vm.changeTaskState = function(Id, Estado) {
-            var request = $http.put('http://localhost:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+            var request = $http.put('http://127.0.0.1:49822/api/tasks/' + Id, '=' + Estado, { headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
         }
 
-        
+
         //CALENDAR
 
         vm.calendarOptions = {
@@ -102,7 +102,7 @@
             'agendaDay': 'Do MMMM YYYY'
         };
 
-        $http.get('http://localhost:49822/api/salesmen/1/tasks/', config).then(function(response){
+        $http.get('http://127.0.0.1:49822/api/salesmen/1/tasks/', config).then(function(response){
             vm.tasks = response.data;
             var source = {
                 events: []

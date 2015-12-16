@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Net;
+using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using FirstREST.Lib_Primavera.Model;
 
@@ -130,6 +132,29 @@ namespace FirstREST.Controllers
         public IEnumerable<Lib_Primavera.Model.Fatura> ClientInvoices(string id)
         {
             return Lib_Primavera.PriIntegration.FaturasCliente(id);
+        }
+
+        [Route("api/clients/{clientId}/invoices/{docId}")]
+        [HttpGet]
+        public HttpResponseMessage GenerateInvoice(string docId)
+        {
+            try
+            {
+                var path = System.Web.HttpContext.Current.Server.MapPath("~/Faturas/invoice" + docId + ".xps");
+                HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+                var stream = new FileStream(path, FileMode.Open);
+                result.Content = new StreamContent(stream);
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                result.Content.Headers.ContentDisposition.FileName = Path.GetFileName(path);
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                result.Content.Headers.ContentLength = stream.Length;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse("No invoice available");
+            }
+            
         }
     }
 }
