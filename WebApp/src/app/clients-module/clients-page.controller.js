@@ -55,6 +55,13 @@
                 vm.leads = response.data;
             });
 
+            promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID + '/invoices');
+
+            promise.then(function requestDone (response) {
+                vm.invoices = response.data;
+                console.log(response.data);
+            });
+
 
         });
 
