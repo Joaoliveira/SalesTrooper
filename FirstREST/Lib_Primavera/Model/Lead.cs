@@ -48,6 +48,11 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+        public int Estado
+        {
+            get;
+            set;
+        }
 
     }
 }
