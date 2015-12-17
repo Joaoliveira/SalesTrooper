@@ -358,7 +358,7 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade FROM CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\'");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, EstadoVenda FROM CabecOportunidadesVenda WHERE Vendedor = " + "\'" + id + "\'");
 
 
                 while (!objList.NoFim())
@@ -368,7 +368,8 @@ namespace FirstREST.Lib_Primavera
                         idLead = objList.Valor("ID"),
                         DescLead = objList.Valor("Descricao"),
                         Entidade = objList.Valor("Entidade"),
-                        TipoEntidade = objList.Valor("TipoEntidade")
+                        TipoEntidade = objList.Valor("TipoEntidade"),
+                        Estado = objList.Valor("EstadoVenda")
                     });
                     objList.Seguinte();
 
