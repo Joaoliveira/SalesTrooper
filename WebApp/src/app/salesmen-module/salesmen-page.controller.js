@@ -131,30 +131,63 @@
             }
         };
 
-
+ 
 
         /////////////
         promise = $http.get('http://localhost:49822/api/salesmen/' + '1' + '/leads');
 
-        function chartPieData() {
-            vm.data = [];
-           var openLeads= 5;
-           var lostLeads=3;
-           var wonLeads=10;
-           
+        promise.then(function requestDone (response) {
 
-           vm.data.push(Math.floor(openLeads));
-           vm.data.push(Math.floor(lostLeads));
-           vm.data.push(Math.floor(wonLeads));
+            vm.contents=[];
+            vm.leads = response.data;
+
+            var openLeads=0;
+            var wonLeads=0;
+            var lostLeads=0;
+
+
+            for(var i = 0; i < vm.leads.length; i++) {
+
+                var obj ={
+                    descLead : vm.leads[i].DescLead,
+                    entidade : vm.leads[i].Entidade,
+                    estado : vm.leads[i].Estado,
+                    tipoEntidade : vm.leads[i].TipoEntidade,
+                    idlead : vm.leads[i].Idlead
+                };
+
+                if(obj.estado == 0)
+                {
+                    openLeads++;
+                }
+                else if(obj.estado == 1)
+                {
+                    wonLeads++;
+                }
+                else if(obj.estado == 2)
+                {
+                    lostLeads++;
+                }
+
+
+           }
+
+           function chartPieData() {
+            vm.data = [];
+
+           vm.data.push(openLeads);
+           vm.data.push(wonLeads);
+           vm.data.push(lostLeads);
         }
 
         // init
 
-        chartPieData();
+        chartPieData();     
 
         // Simulate async data update
         $interval(chartPieData, 5000);
 
+          });
 
          
 
@@ -164,3 +197,8 @@
     }
 })
 ();
+
+
+
+
+ /* */

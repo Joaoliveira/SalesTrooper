@@ -68,9 +68,5 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
-
-
-
->>>>>>> 66f7635007f57143ec9d3533a9b59d0e76b2be18
     }
 }
