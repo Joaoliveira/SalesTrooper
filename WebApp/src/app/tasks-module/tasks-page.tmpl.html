@@ -7,11 +7,10 @@
 	    <md-card-content>
 	        <div class="content-padded">
 	            <h2 class="md-toolbar-tools ng-scope" translate="">{{vm.tasks.Resumo}}</h2>
-	            <p><b>Cliente:</b> {{vm.tasks.EntidadePrincipal}}</p>
-	            <p><b>Data de inicio:</b> {{vm.tasks.DataDeInicio | date:'MMM d, y h:mm:ss a'}}</p>
-	            <p><b>Data de fim:</b> {{vm.tasks.DataDeFim | date:'MMM d, y h:mm:ss a' }}</p>
-	            <p><b>Ultima atualizaçao:</b> {{vm.tasks.DataUltimaAtualizacao | date:'MMM d, y h:mm:ss a' }}</p>
-
+	            <p><b>Client:</b> {{vm.tasks.EntidadePrincipal}}</p>
+	            <p><b>Start date:</b> {{vm.tasks.DataDeInicio | date:'MMM d, y h:mm:ss a'}}</p>
+	            <p><b>End date:</b> {{vm.tasks.DataDeFim | date:'MMM d, y h:mm:ss a' }}</p>
+	            <p><b>Last update:</b> {{vm.tasks.DataUltimaAtualizacao | date:'MMM d, y h:mm:ss a' }}</p>
 	        </div>
 
 
@@ -30,22 +29,45 @@
 		        </div>
 		    </md-list-item>
 		</md-list>
+		<div layout-gt-xs="row">
+	  		<md-input-container class="md-block" flex-gt-xs>
+	        	<label>Postpone reason</label>
+	        	<input type="text">
+	      	</md-input-container>
+	    </div>
+	    <div layout-gt-xs="row">
+		    	<div class="event-dialog-input-row" layout="row" layout-align="start center">
+                    <p flex hide-sm>New date</p>
+                    <md-datepicker ng-model="vm.start" md-placeholder="Start date"></md-datepicker>
+                </div>
+                <div class="event-dialog-input-row" layout="row" layout-align="start center">
+                    <p flex>Start time</p>
+                    <div layout="row" layout-align="end center">
+                        <md-icon class="padding-right-10" md-font-icon="zmdi zmdi-access-time"></md-icon>
+                        <md-select class="padding-right-10" placeholder="Hours" ng-model="vm.startTime.hour">
+                            <md-option ng-repeat="hour in vm.availableHours" ng-value="hour">{{::hour | padding:2}}</md-option>
+                        </md-select>
+                        <md-select class="padding-right-10" placeholder="Minutes" ng-model="vm.startTime.minute">
+                            <md-option ng-repeat="minute in vm.availableMinutes" ng-value="minute">{{::minute | padding:2}}</md-option>
+                        </md-select>
+                    </div>
+                </div>
+                <div class="event-dialog-input-row" layout="row" layout-align="start center" ng-hide="vm.event.allDay">
+                    <p flex>End time</p>
+                    <div layout="row" layout-align="end center">
+                        <md-icon class="padding-right-10" md-font-icon="zmdi zmdi-access-time"></md-icon>
+                        <md-select class="padding-right-10" placeholder="Hours" ng-model="vm.endTime.hour">
+                            <md-option ng-repeat="hour in vm.availableHours" ng-value="hour">{{::hour | padding:2}}</md-option>
+                        </md-select>
+                        <md-select class="padding-right-10" placeholder="Minutes" ng-model="vm.endTime.minute">
+                            <md-option ng-repeat="minute in vm.availableMinutes" ng-value="minute">{{::minute | padding:2}}</md-option>
+                        </md-select>
+                    </div>
+                </div>
+	    </div>
 	</md-card>
+
 </div>
-
-<md-card id="task-location" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
-	<md-toolbar>
-        <h2 class="md-toolbar-tools ng-scope" translate="">Task Location</h2>
-    </md-toolbar>
-    <div class="map-task">
-		<div id="map_terrain_canvas">
-			<ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
-				<ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
-			</ui-gmap-google-map>
-		</div>
-	</div>
-</md-card>
-
 
 <!--<md-card id="info" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
 	<md-toolbar>

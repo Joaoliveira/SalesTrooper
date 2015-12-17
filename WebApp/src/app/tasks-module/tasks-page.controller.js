@@ -21,7 +21,8 @@
             });
         });*/
 
-
+        vm.availableHours = Array.apply(null, {length: 23}).map(Number.call, Number);
+        vm.availableMinutes = Array.apply(null, {length: 60}).map(Number.call, Number);
         var promise = $http.get('http://localhost:49822/api/tasks/' + $stateParams.taskID);
 
         promise.then(function requestDone (response) {
