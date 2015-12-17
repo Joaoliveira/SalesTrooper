@@ -20,7 +20,7 @@
 
         triMenuProvider.addMenu({
             name: 'Salesmen',
-            icon: 'zmdi zmdi-grade',
+            icon: 'zmdi zmdi-pin-account',
             type: 'dropdown',
             priority: 1.1,
             children: [{
@@ -30,4 +30,6 @@
             }]
         });
     }
+  
+
 })();

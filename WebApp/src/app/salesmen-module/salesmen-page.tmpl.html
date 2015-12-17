@@ -60,4 +60,17 @@
             </md-list>
         </md-card>
     </div>
+    <div class="margin-10" layout="row" layout-align="center top">
+    <md-card id="salesman" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
+            <md-toolbar>
+                <h2 class="md-toolbar-tools ng-scope" translate="">Salesman KPIs</h2>
+            </md-toolbar>
+            <canvas class="chart-pie" chart-data="vm.data" chart-labels="vm.labels" chart-legend="true" chart-options="vm.options"></canvas>
+
+            <div google-chart chart="::vm.chartData"></div>
+    </div>
+
+
+
+
 </md-content>
