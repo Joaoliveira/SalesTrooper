@@ -49,11 +49,26 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+<<<<<<< HEAD
         public int Estado
+=======
+        public double ValorTotalOV
+>>>>>>> 66f7635007f57143ec9d3533a9b59d0e76b2be18
         {
             get;
             set;
         }
 
+<<<<<<< HEAD
+=======
+        public DateTime DataFecho
+        {
+            get;
+            set;
+        }
+
+
+
+>>>>>>> 66f7635007f57143ec9d3533a9b59d0e76b2be18
     }
 }

@@ -3,21 +3,9 @@
         <h2 class="md-display-3" translate></h2>
     </div>
 
-    <div class="margin-20" layout="row" layout-align="center top">
-        <md-card flex="80">
+    <div class="margin-top-20" layout="row" layout-align="center top">
+        <md-card flex="50" class="md-whiteframe-z1 margin-top-20" layout-align="center center">
             <img src="assets/images/avatars/avatar-1.png" alt="Card Image">
-            <md-card-content>
-                <md-card id="client-location" style="width: 100%">
-                    <div class="map-client">
-                        <div id="map_terrain_canvas">
-                            <ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
-                                <ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
-                            </ui-gmap-google-map>
-                        </div>
-                    </div>
-                </md-card>
-                
-            </md-card-content>
         </md-card>
 
 
@@ -60,15 +48,33 @@
             </md-list>
         </md-card>
     </div>
-    <div class="margin-10" layout="row" layout-align="center top">
+
+    <md-card id="client-location" style="width: 100%">
+                    <div class="map-client">
+                        <div id="map_terrain_canvas">
+                            <ui-gmap-google-map center="vm.terrainMap.center" zoom="vm.terrainMap.zoom" options="vm.terrainMap.options">
+                                <ui-gmap-marker coords="vm.terrainMap.marker.coords" idkey="vm.terrainMap.marker.id" options="vm.terrainMap.marker.options"></ui-gmap-marker>
+                            </ui-gmap-google-map>
+                        </div>
+                    </div>
+                </md-card>
+
+
+    
     <md-card id="salesman" class="md-whiteframe-z1  margin-top-20" style="width: 95%">
-            <md-toolbar>
-                <h2 class="md-toolbar-tools ng-scope" translate="">Salesman KPIs</h2>
-            </md-toolbar>
+        <md-toolbar>
+            <h2 class="md-toolbar-tools ng-scope" translate="">Salesman KPIs</h2>
+        </md-toolbar>
+        <div class="margin-10" layout="row" layout-align="center center">
             <canvas class="chart-pie" chart-data="vm.data" chart-labels="vm.labels" chart-legend="true" chart-options="vm.options"></canvas>
 
             <div google-chart chart="::vm.chartData"></div>
-    </div>
+        </div>
+    </md-card>
+
+    <div ng-controller="SalesmenPageController as vm">
+    <tri-table class="elements-image-table-example" columns="::vm.columns" contents="::vm.contents" page-size="5"></tri-table>
+</div>
 
 
 
