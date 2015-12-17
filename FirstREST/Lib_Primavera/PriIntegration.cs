@@ -553,7 +553,7 @@ namespace FirstREST.Lib_Primavera
 
                 //objList = PriEngine.Engine.Comercial.Clientes.LstClientes();
 
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo FROM CabecOportunidadesVenda");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo, ValorTotalOV, DataFecho, DataCriacao FROM CabecOportunidadesVenda");
 
 
                 while (!objList.NoFim())
@@ -564,7 +564,11 @@ namespace FirstREST.Lib_Primavera
                         DescLead = objList.Valor("Descricao"),
                         Entidade = objList.Valor("Entidade"),
                         TipoEntidade = objList.Valor("TipoEntidade"),
-                        Resumo = objList.Valor("Resumo")
+                        Resumo = objList.Valor("Resumo"),
+                        ValorTotalOV = objList.Valor("ValorTotalOV"),
+                        //mudar para DataFecho depois, quando nao houver nulls
+                        DataFecho = objList.Valor("DataCriacao")
+
                     });
                     objList.Seguinte();
 
@@ -585,7 +589,7 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo, ValorTotalOV, DataFecho, DataCriacao FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
 
 
                 while (!objList.NoFim())
@@ -596,7 +600,10 @@ namespace FirstREST.Lib_Primavera
                         DescLead = objList.Valor("Descricao"),
                         Entidade = objList.Valor("Entidade"),
                         TipoEntidade = objList.Valor("TipoEntidade"),
-                        Resumo = objList.Valor("Resumo")
+                        Resumo = objList.Valor("Resumo"),
+                        ValorTotalOV = objList.Valor("ValorTotalOV"),
+                        //mudar para DataFecho depois, quando nao houver nulls
+                        DataFecho = objList.Valor("DataCriacao")
                     });
                     objList.Seguinte();
 

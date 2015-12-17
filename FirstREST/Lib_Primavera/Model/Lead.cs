@@ -49,5 +49,19 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public double ValorTotalOV
+        {
+            get;
+            set;
+        }
+
+        public DateTime DataFecho
+        {
+            get;
+            set;
+        }
+
+
+
     }
 }
