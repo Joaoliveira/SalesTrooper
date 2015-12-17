@@ -9,17 +9,9 @@
     function SalesmenPageController(uiGmapGoogleMapApi, $http, $stateParams) {
         var vm = this;
         vm.clientes = [];
-
-    vm.columns = [{
-            title: '',
-            field: '',
-            sortable: false,
-            filter: 'tableImage'
-        },{
-            title: 'Client',
-            field: 'entidade',
-            sortable: true
-        }]; 
+        
+        
+    
         var promise = $http.get('http://localhost:49822/api/salesmen/' + 1/*$stateParams.salesmanID*/);
 
         promise.then(function requestDone (response) {
@@ -121,8 +113,6 @@
 
            }
 
-        
-
            function chartPieData() {
             vm.data = [];
 
@@ -140,6 +130,20 @@
 
         
         });
+
+vm.columns = [{
+            title: 'Client',
+            field: 'Entidade',
+            sortable: true
+        },{
+            title: 'Valor',
+            field: 'ValorTotalOV',
+            sortable: true
+        },{
+            title: 'Closing Date',
+            field: 'DataFecho',
+            sortable: true
+        }]; 
 
 
         // LINEAR CHART
