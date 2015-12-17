@@ -6,7 +6,7 @@
     .controller('TasksPageController', TasksPageController);
 
     /* @ngInject */
-    function TasksPageController(uiGmapGoogleMapApi,$http, $stateParams) {
+    function TasksPageController(uiGmapGoogleMapApi, $http, $stateParams) {
 
         var vm = this;
         vm.tasks = [];

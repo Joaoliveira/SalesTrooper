@@ -68,5 +68,11 @@ namespace FirstREST.Lib_Primavera.Model
             get;
             set;
         }
+
+        public int Percentagem
+        {
+            get;
+            set;
+        }
     }
 }
