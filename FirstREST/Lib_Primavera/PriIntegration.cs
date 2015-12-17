@@ -592,7 +592,7 @@ namespace FirstREST.Lib_Primavera
 
             if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
             {
-                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo, ValorTotalOV, DataFecho, DataCriacao FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
+                objList = PriEngine.Engine.Consulta("SELECT ID, Descricao, Entidade, TipoEntidade, Resumo, ValorTotalOV, DataFecho, DataCriacao, BarraPercentual FROM CabecOportunidadesVenda WHERE ID = " + "\'" + id + "\'");
 
 
                 while (!objList.NoFim())
@@ -605,6 +605,7 @@ namespace FirstREST.Lib_Primavera
                         TipoEntidade = objList.Valor("TipoEntidade"),
                         Resumo = objList.Valor("Resumo"),
                         ValorTotalOV = objList.Valor("ValorTotalOV"),
+                        Percentagem = objList.Valor("BarraPercentual"),
                         //mudar para DataFecho depois, quando nao houver nulls
                         DataFecho = objList.Valor("DataCriacao")
                     });
