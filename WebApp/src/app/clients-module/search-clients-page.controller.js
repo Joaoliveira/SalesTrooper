@@ -8,7 +8,7 @@
     function SearchClientsPageController($http) {
         var vm = this;
 
-        var promise = $http.get('http://localhost:49822/api/salesmen/1/clients');
+        var promise = $http.get('http://127.0.0.1:49822/api/salesmen/1/clients');
         vm.clients = [];
         promise.then(function requestDone (response) {
             vm.contents = [];
