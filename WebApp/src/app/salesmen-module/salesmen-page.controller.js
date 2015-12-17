@@ -172,6 +172,8 @@
 
            }
 
+          
+
            function chartPieData() {
             vm.data = [];
 
@@ -188,8 +190,25 @@
         $interval(chartPieData, 5000);
 
           });
-
-         
+        
+         vm.columns = [{
+            title: '',
+            field: 'thumb',
+            sortable: false,
+            filter: 'tableImage'
+        },{
+            title: 'Client',
+            field: 'entidade',
+            sortable: true
+        },{
+            title: 'Valor',
+            field: 'ValorTotalOV',
+            sortable: true
+        },{
+            title: 'Closing Date',
+            field: 'DataFecho',
+            sortable: true
+        }]; 
 
     });
 
