@@ -16,7 +16,7 @@
                 averageEarnings: 0
             };
         vm.leads = [];
-        var promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID);
+        var promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientID);
 
         promise.then(function requestDone (response) {
             vm.client = response.data;
@@ -56,13 +56,13 @@
             };
             });
 
-            promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID + '/leads');
+            promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientID + '/leads');
 
             promise.then(function requestDone (response) {
                 vm.leads = response.data;
             });
 
-            promise = $http.get('http://127.0.0.1:49822/api/clients/' + $stateParams.clientID + '/invoices');
+            promise = $http.get('http://localhost:49822/api/clients/' + $stateParams.clientID + '/invoices');
 
 
 
@@ -92,9 +92,12 @@
 
 
                 $("#totalSales").html(vm.salesData.totalSales);
+                $("#totalSales").attr("countupto",vm.salesData.totalSales);
                 $("#averageEarnings").html("$"+vm.salesData.averageEarnings);
+                $("#averageEarnings").attr("countupto","$"+vm.salesData.averageEarnings);
                 $("#TotalEarnings").html("$"+vm.salesData.totalEarnings);
-
+                $("#TotalEarnings").attr("countupto","$"+vm.salesData.totalEarnings);
+                console.log($("#totalSales").html());
                         vm.series = ['Sales'];
                         vm.options = {
                             datasetFill: false

@@ -66,11 +66,11 @@
                 	$location.path("/clients/" + field);
                 }
                 else if(field != null){
-                    var promise = $http.get('http://127.0.0.1:49822/api' + $location.path() + "/invoices/" + field);
+                    var promise = $http.get('http://localhost:49822/api' + $location.path() + "/invoices/" + field);
 
                     promise.then(function requestDone (response) {
                         if(response.data != "No invoice available")
-                            window.open('http://127.0.0.1:49822/api' + $location.path() + "/invoices/" + field);
+                            window.open('http://localhost:49822/api' + $location.path() + "/invoices/" + field);
                         else
                             alert(response.data);
                     });

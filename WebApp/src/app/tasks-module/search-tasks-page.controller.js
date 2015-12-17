@@ -8,7 +8,7 @@
     function SearchTasksPageController($http) {
         var vm = this;
 
-        var promise = $http.get('http://127.0.0.1:49822/api/tasks/');
+        var promise = $http.get('http://localhost:49822/api/tasks/');
         vm.tasks = [];
         promise.then(function requestDone (response) {
             vm.contents = [];

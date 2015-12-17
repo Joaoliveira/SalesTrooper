@@ -9,9 +9,9 @@
     function SalesmenPageController(uiGmapGoogleMapApi, $http, $stateParams) {
         var vm = this;
         vm.clientes = [];
-        
-        
-    
+
+
+
         var promise = $http.get('http://localhost:49822/api/salesmen/' + 1/*$stateParams.salesmanID*/);
 
         promise.then(function requestDone (response) {
@@ -28,14 +28,14 @@
                 uiGmapGoogleMapApi.then(function(maps) {
                 vm.terrainMap = {
                     center: {
-                      latitude: rsp.results[0].geometry.location.lat, 
+                      latitude: rsp.results[0].geometry.location.lat,
                       longitude: rsp.results[0].geometry.location.lng
                   },
                   zoom: 15,
                   marker: {
                     id:0,
                     coords: {
-                        latitude: rsp.results[0].geometry.location.lat, 
+                        latitude: rsp.results[0].geometry.location.lat,
                         longitude: rsp.results[0].geometry.location.lng
                     },
                     options: {
@@ -70,7 +70,7 @@
             datasetFill: false
         };
 
-        
+
          vm.leadsRows=[];
         promise = $http.get('http://localhost:49822/api/salesmen/' + '1' + '/leads');
 
@@ -123,12 +123,12 @@
 
         // init
 
-        chartPieData();     
+        chartPieData();
 
         // Simulate async data update
         $interval(chartPieData, 5000);
 
-        
+
         });
 
 vm.columns = [{
@@ -143,7 +143,7 @@ vm.columns = [{
             title: 'Closing Date',
             field: 'DataFecho',
             sortable: true
-        }]; 
+        }];
 
 
         // LINEAR CHART
@@ -211,14 +211,14 @@ vm.columns = [{
         };
 
 
-        
 
 
-         
+
+
 
     });
 
-      
+
     }
 })
 ();

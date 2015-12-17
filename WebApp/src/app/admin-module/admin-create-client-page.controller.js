@@ -25,7 +25,7 @@
 
         initClient();
 
-        var salesmenRequest = $http.get('http://127.0.0.1:49822/api/salesmen/');
+        var salesmenRequest = $http.get('http://localhost:49822/api/salesmen/');
 
         salesmenRequest.then(function(response){
         	console.log(response.data);
@@ -33,7 +33,7 @@
         });
 
         vm.createClient = function() {
-        	var request = $http.post('http://127.0.0.1:49822/api/clients/', vm.client);
+        	var request = $http.post('http://localhost:49822/api/clients/', vm.client);
 
         	request.then(
         		function(response){ //success
