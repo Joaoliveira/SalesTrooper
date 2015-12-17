@@ -9,6 +9,7 @@
     function SalesmenPageController(uiGmapGoogleMapApi, $http, $stateParams) {
         var vm = this;
         vm.clientes = [];
+
         var promise = $http.get('http://localhost:49822/api/salesmen/' + 1/*$stateParams.salesmanID*/);
 
         promise.then(function requestDone (response) {
@@ -66,6 +67,67 @@
         vm.options = {
             datasetFill: false
         };
+
+        
+         vm.leadsRows=[];
+        promise = $http.get('http://localhost:49822/api/salesmen/' + '1' + '/leads');
+
+        promise.then(function requestDone (response) {
+
+            vm.contents=[];
+            vm.leads = response.data;
+
+            var openLeads=0;
+            var wonLeads=0;
+            var lostLeads=0;
+
+
+            for(var i = 0; i < vm.leads.length; i++) {
+
+                var obj ={
+                    descLead : vm.leads[i].DescLead,
+                    entidade : vm.leads[i].Entidade,
+                    estado : vm.leads[i].Estado,
+                    tipoEntidade : vm.leads[i].TipoEntidade,
+                    idlead : vm.leads[i].Idlead,
+                    valorTotalOV : vm.leads[i].ValorTotalOV,
+                    dataFecho : vm.leads[i].DataFecho
+                };
+
+                if(obj.estado == 0)
+                {
+                    openLeads++;
+                }
+                else if(obj.estado == 1)
+                {
+                    wonLeads++;
+                    vm.leadsRows.push(obj);
+                }
+                else if(obj.estado == 2)
+                {
+                    lostLeads++;
+                }
+
+
+           }
+
+           function chartPieData() {
+            vm.data = [];
+
+           vm.data.push(openLeads);
+           vm.data.push(wonLeads);
+           vm.data.push(lostLeads);
+        }
+
+        // init
+
+        chartPieData();     
+
+        // Simulate async data update
+        $interval(chartPieData, 5000);
+
+          });
+
 
         // LINEAR CHART
            vm.chartData = {
@@ -133,7 +195,7 @@
 
  
 
-        /////////////
+
         promise = $http.get('http://localhost:49822/api/salesmen/' + '1' + '/leads');
 
         promise.then(function requestDone (response) {
@@ -189,9 +251,9 @@
         // Simulate async data update
         $interval(chartPieData, 5000);
 
-          });
-        
-         vm.columns = [{
+
+
+        vm.columns = [{
             title: '',
             field: 'thumb',
             sortable: false,
@@ -209,6 +271,11 @@
             field: 'DataFecho',
             sortable: true
         }]; 
+
+
+          });
+        
+         
 
     });
 
