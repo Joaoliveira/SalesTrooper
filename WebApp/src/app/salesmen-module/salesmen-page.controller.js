@@ -103,11 +103,12 @@
                 else if(obj.estado == 1)
                 {
                     wonLeads++;
-                    vm.leadsRows.push(obj);
+                    
                 }
                 else if(obj.estado == 2)
                 {
                     lostLeads++;
+                    vm.leadsRows.push(obj);
                 }
 
 
@@ -133,15 +134,15 @@
 
 vm.columns = [{
             title: 'Client',
-            field: 'Entidade',
+            field: 'entidade',
             sortable: true
         },{
             title: 'Valor',
-            field: 'ValorTotalOV',
+            field: 'valorTotalOV',
             sortable: true
         },{
             title: 'Closing Date',
-            field: 'DataFecho',
+            field: 'dataFecho',
             sortable: true
         }];
 
