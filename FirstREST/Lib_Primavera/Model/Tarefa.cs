@@ -13,7 +13,7 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
-        public string TipoAtividade
+        public string IdTipoAtividade
         {
             get;
             set;

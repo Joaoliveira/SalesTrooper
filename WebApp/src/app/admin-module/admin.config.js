@@ -16,9 +16,7 @@
             // set the controller to load for this page
             controller: 'AdminCreateClientPageController',
             controllerAs: 'vm'
-        });
-
-        $stateProvider
+        })
         .state('triangular.admin-default.create-lead', {
             url: '/admin/create-lead',
             templateUrl: 'app/admin-module/admin-create-lead-page.tmpl.html',

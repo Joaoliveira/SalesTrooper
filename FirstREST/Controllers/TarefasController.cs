@@ -53,13 +53,12 @@ namespace FirstREST.Controllers
                 var response = Request.CreateResponse(
                    HttpStatusCode.Created, tarefa);
                 string uri = Url.Link("DefaultApi", new { IdTarefa = tarefa.Id });
-                response.Headers.Location = new Uri(uri);
                 return response;
             }
 
             else
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
             }
 
         }

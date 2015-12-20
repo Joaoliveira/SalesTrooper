@@ -1,0 +1,27 @@
+<md-content class="padded-content-page" id="content">
+    <h2>Create task</h2>
+    <md-input-container>
+        <label>Task Identifier</label>
+        <md-select ng-model="vm.taskIt.IdTarefa" placeholder="Select a task">
+            <md-option ng-value="task.Id" ng-repeat="task in vm.tasks">{{ task.Resumo }}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>Description</label>
+        <input ng-model="vm.taskIt.Descricao" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Resumo</label>
+        <input ng-model="vm.taskIt.Resumo" type="text">
+    </md-input-container>
+<md-input-container>
+        <label>Salesman</label>
+        <md-select ng-model="vm.taskIt.Utilizador" placeholder="Select a salesman">
+            <md-option ng-value="salesman.NomeVendedor" ng-repeat="salesman in vm.salesmen">{{ salesman.NomeVendedor }}</md-option>
+        </md-select>
+    </md-input-container> 
+    <div layout="row" layout-align="end center">
+        <md-button class="md-primary" ng-click="vm.createTaskIteration()">Create</md-button>
+        <md-button>Cancel</md-button>
+    </div>
+</md-content>
