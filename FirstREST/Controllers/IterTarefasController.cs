@@ -42,38 +42,14 @@ namespace FirstREST.Controllers
 
         // POST api/<controller>
         [Route("api/itertarefas")]
-        [HttpPost]
-        public HttpResponseMessage Post(Lib_Primavera.Model.IterTarefa tarefa)
-        {
-            Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
-            erro = Lib_Primavera.PriIntegration.InsereIterTarefaObj(tarefa);
-
-            if (erro.Erro == 0)
-            {
-                var response = Request.CreateResponse(
-                   HttpStatusCode.Created, tarefa);
-                string uri = Url.Link("DefaultApi", new { IdTarefa = tarefa.Id });
-                response.Headers.Location = new Uri(uri);
-                return response;
-            }
-
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
-        }
-
-        // PUT api/<controller>/5
-        [Route("api/itertarefas/{id}/")]
         [HttpPut]
-        public HttpResponseMessage Put(string id, [FromBody]string value)
+        public HttpResponseMessage Put(Lib_Primavera.Model.IterTarefa tarefa)
         {
             Lib_Primavera.Model.RespostaErro erro = new Lib_Primavera.Model.RespostaErro();
 
             try
             {
-                erro = Lib_Primavera.PriIntegration.UpdIterTarefa(id, value);
+                erro = Lib_Primavera.PriIntegration.InsereIterTarefaObj(tarefa);
                 if (erro.Erro == 0)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, erro.Descricao);
@@ -88,6 +64,7 @@ namespace FirstREST.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, erro.Descricao);
             }
+
         }
 
         // DELETE api/<controller>/5

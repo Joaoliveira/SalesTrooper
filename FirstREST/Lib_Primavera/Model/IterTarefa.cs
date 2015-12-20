@@ -25,17 +25,23 @@ namespace FirstREST.Lib_Primavera.Model
             set;
         }
 
+        public string Resumo
+        {
+            get;
+            set;
+        }
+
         public string Utilizador
         {
             get;
             set;
         }
 
-        /*public System.DateTime Data
+        public System.DateTime Data
         {
             get;
             set;
-        } */
+        }
 
         public byte[] VersaoUltAct
         {

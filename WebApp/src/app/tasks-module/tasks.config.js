@@ -15,13 +15,20 @@
             templateUrl: 'app/tasks-module/search-tasks-page.tmpl.html',
             controller: 'SearchTasksPageController',
             controllerAs: 'vm'    
-        })        
+        })    
+        .state('triangular.admin-default.create-task-it-page', {
+            url: '/tasks/add-task-iteration',
+            templateUrl: 'app/tasks-module/create-task-it-page.tmpl.html',
+            controller: 'CreateTaskIterationPageController',
+            controllerAs: 'vm'
+        })    
         .state('triangular.admin-default.tasks-page', {
             url: '/tasks/:taskID',
             templateUrl: 'app/tasks-module/tasks-page.tmpl.html',
             controller: 'TasksPageController',
             controllerAs: 'vm'
         });
+
 
         uiGmapGoogleMapApiProvider.configure({
             v: '3.17',
@@ -36,6 +43,11 @@
             children: [{
                 name: 'Tasks',
                 state: 'triangular.admin-default.search-tasks-page',
+                type: 'link'
+            },
+            {
+                name: 'Add Task Iteration',
+                state: 'triangular.admin-default.create-task-it-page',
                 type: 'link'
             }]
         });
