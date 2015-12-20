@@ -25,17 +25,16 @@
         var clientsRequest = $http.get('http://localhost:49822/api/clients/');
 
         clientsRequest.then(function(response){
-        	console.log(response.data);
         	vm.clients = response.data;
         });
 
         var salesmenRequest = $http.get('http://localhost:49822/api/salesmen/');
 
         salesmenRequest.then(function(response){
-            console.log(response.data);
             vm.salesmen = response.data;
         });
 
+        
 
         vm.createLead = function() {
         	var request = $http.post('http://localhost:49822/api/leads/', vm.lead);

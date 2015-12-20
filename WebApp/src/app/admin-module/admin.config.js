@@ -27,6 +27,15 @@
             controllerAs: 'vm'
         });
 
+        $stateProvider
+        .state('triangular.admin-default.create-task', {
+            url: '/admin/create-task',
+            templateUrl: 'app/admin-module/admin-create-task-page.tmpl.html',
+            // set the controller to load for this page
+            controller: 'AdminCreateTaskPageController',
+            controllerAs: 'vm'
+        });
+
         triMenuProvider.addMenu({
             name: 'Admin',
             icon: 'zmdi zmdi-settings',
@@ -40,6 +49,11 @@
             {
                 name: 'Create lead',
                 state: 'triangular.admin-default.create-lead',
+                type: 'link'
+            },
+            {
+                name: 'Create task',
+                state: 'triangular.admin-default.create-task',
                 type: 'link'
             }]
         });

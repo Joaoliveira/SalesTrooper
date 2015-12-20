@@ -1,0 +1,66 @@
+<md-content class="padded-content-page" id="content">
+    <h2>Create task</h2>
+    <md-input-container>
+        <label>Summary</label>
+        <input ng-model="vm.task.Resumo" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Description</label>
+        <input ng-model="vm.task.Descricao" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Place</label>
+        <input ng-model="vm.task.LocalRealizacao" type="text">
+    </md-input-container>
+    <md-input-container>
+        <label>Client</label>
+        <md-select ng-model="vm.task.EntidadePrincipal" placeholder="Select a client">
+            <md-option ng-value="client.CodCliente" ng-repeat="client in vm.clients">{{ client.NomeCliente }}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>Salesman</label>
+        <md-select ng-model="vm.task.Utilizador" placeholder="Select a salesman">
+            <md-option ng-value="salesman.CodVendedor" ng-repeat="salesman in vm.salesmen">{{ salesman.NomeVendedor }}</md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>Lead</label>
+        <md-select ng-model="vm.task.IdCabecOVenda" placeholder="Select a lead">
+            <md-option ng-value="lead.Oportunidade" ng-repeat="lead in vm.leads">{{ lead.DescLead }}</md-option>
+        </md-select>
+    </md-input-container>
+    <div class="event-dialog-input-row" layout="row" layout-align="start center">
+        <p flex hide-sm>Date</p>
+            <md-datepicker ng-model="vm.date" md-placeholder="Start date"></md-datepicker>
+        </div>
+        <div class="event-dialog-input-row" layout="row" layout-align="start center">
+            <p flex>Start time</p>
+            <div layout="row" layout-align="end center">
+                <md-icon class="padding-right-10" md-font-icon="zmdi zmdi-access-time"></md-icon>
+                <md-select class="padding-right-10" placeholder="Hours" ng-model="vm.startTime.hour">
+                    <md-option ng-repeat="hour in vm.availableHours" ng-value="hour">{{::hour | padding:2}}</md-option>
+                </md-select>
+                <md-select class="padding-right-10" placeholder="Minutes" ng-model="vm.startTime.minute">
+                    <md-option ng-repeat="minute in vm.availableMinutes" ng-value="minute">{{::minute | padding:2}}</md-option>
+                </md-select>
+            </div>
+        </div>
+        <div class="event-dialog-input-row" layout="row" layout-align="start center">
+            <p flex>End time</p>
+            <div layout="row" layout-align="end center">
+                <md-icon class="padding-right-10" md-font-icon="zmdi zmdi-access-time"></md-icon>
+                <md-select class="padding-right-10" placeholder="Hours" ng-model="vm.endTime.hour">
+                    <md-option ng-repeat="hour in vm.availableHours" ng-value="hour">{{::hour | padding:2}}</md-option>
+                </md-select>
+                <md-select class="padding-right-10" placeholder="Minutes" ng-model="vm.endTime.minute">
+                    <md-option ng-repeat="minute in vm.availableMinutes" ng-value="minute">{{::minute | padding:2}}</md-option>
+                </md-select>
+            </div>
+        </div>
+    </div>
+    <div layout="row" layout-align="end center">
+        <md-button class="md-primary" ng-click="vm.createTask()">Create</md-button>
+        <md-button>Cancel</md-button>
+    </div>
+</md-content>
