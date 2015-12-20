@@ -443,7 +443,7 @@ namespace FirstREST.Lib_Primavera
                     listTarefas.Add(new Model.Tarefa
                     {
                         Id = objList.Valor("Id"),
-                        TipoAtividade = objList.Valor("IdTipoActividade"),
+                        IdTipoAtividade = objList.Valor("IdTipoActividade"),
                         Prioridade = objList.Valor("Prioridade"),
                         Estado = objList.Valor("Estado"),
                         Resumo = objList.Valor("Resumo"),
@@ -980,7 +980,7 @@ namespace FirstREST.Lib_Primavera
                     listTarefas.Add(new Model.Tarefa
                     {
                         Id = objList.Valor("Id"),
-                        TipoAtividade = objList.Valor("IdTipoActividade"),
+                        IdTipoAtividade = objList.Valor("IdTipoActividade"),
                         Prioridade = objList.Valor("Prioridade"),
                         Estado = objList.Valor("Estado"),
                         Resumo = objList.Valor("Resumo"),
@@ -1025,7 +1025,7 @@ namespace FirstREST.Lib_Primavera
                 if (objList.NumLinhas() == 1)
                 {
                     myTar.Id = objList.Valor("Id");
-                    myTar.TipoAtividade = objList.Valor("IdTipoActividade");
+                    myTar.IdTipoAtividade = objList.Valor("IdTipoActividade");
                     myTar.Prioridade = objList.Valor("Prioridade");
                     myTar.Estado = objList.Valor("Estado");
                     myTar.Resumo = objList.Valor("Resumo");
@@ -1069,7 +1069,7 @@ namespace FirstREST.Lib_Primavera
                     results.Add(new Model.Tarefa
                     {
                         Id = objList.Valor("Id"),
-                        TipoAtividade = objList.Valor("IdTipoActividade"),
+                        IdTipoAtividade = objList.Valor("IdTipoActividade"),
                         Prioridade = objList.Valor("Prioridade"),
                         Estado = objList.Valor("Estado"),
                         Resumo = objList.Valor("Resumo"),
@@ -1162,26 +1162,33 @@ namespace FirstREST.Lib_Primavera
                 if (PriEngine.InitializeCompany(FirstREST.Properties.Settings.Default.Company.Trim(), FirstREST.Properties.Settings.Default.User.Trim(), FirstREST.Properties.Settings.Default.Password.Trim()) == true)
                 {
 
-                    myAct.set_ID(tarefa.Id);
-                    myAct.set_IDTipoActividade(tarefa.TipoAtividade);
+                    myAct.set_IDTipoActividade(tarefa.IdTipoAtividade);
                     //myAct.set_Prioridade(tarefa.Prioridade);// miss match de parametros
                     //myAct.set_Estado(tarefa.Estado);// miss match de parametros
                     myAct.set_Resumo(tarefa.Resumo);
                     myAct.set_Descricao(tarefa.Descricao);
                     myAct.set_EntidadePrincipal(tarefa.EntidadePrincipal);
                     //myAct.set_Contacto(tarefa.Contacto); // nao existe
-                    myAct.set_IDContactoPrincipal(tarefa.idContactoPrincipal);
+                    //myAct.set_IDContactoPrincipal(tarefa.idContactoPrincipal);
                     myAct.set_DataInicio(tarefa.DataDeInicio);
                     myAct.set_DataFim(tarefa.DataDeFim);
                     myAct.set_LocalRealizacao(tarefa.LocalRealizacao);
                     myAct.set_Utilizador(tarefa.Utilizador);
-                    myAct.set_DataUltAct(tarefa.DataUltimaAtualizacao);
-                    myAct.set_TodoDia(tarefa.TodoDia);
+                    myAct.set_TodoDia(false);
                     //myAct.set_PeriodoAntecedencia(tarefa.PeriodoAntecedencia);// miss match de parametros
                     //myAct.set_ResponsavelPor(tarefa.ResponsavelPor); // nao existe
                     myAct.set_IDCabecOVenda(tarefa.idCabecalhoOportunidadeVenda);
+                    myAct.set_IncluiOutrosContactos(false);
+                    myAct.set_IncluiUtilizadoresERP(false);
+                    myAct.set_IncluiContactoPrincipal(false);
+                    myAct.set_ActividadeComDataLimite(false);
+                    myAct.set_IntegrarOutlook(false);
+                    myAct.set_CorreccaoMonetaria(false);
+                    myAct.set_ComPeriodicidade(false);
                     //myAct.set_DataLimiteRealizacao(tarefa.DataLimiteRealizacao); //miss match de parametros
-
+                    myAct.set_Duracao(10);
+                    myAct.set_LembrarAntes(false);
+                    myAct.set_ActividadeGrupo(false);
                     PriEngine.Engine.CRM.Actividades.Actualiza(myAct);
 
                     erro.Erro = 0;
