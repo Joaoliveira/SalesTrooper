@@ -40,7 +40,7 @@
             }]
         }];
         vm.user = {
-            name: 'Vítor',
+            name: 'SINF_DEMO',
             email: 'info@oxygenna.com',
             location: 'Sitia, Crete, Greece',
             website: 'http://www.oxygenna.com',
